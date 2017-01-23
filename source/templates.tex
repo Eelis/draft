@@ -1385,11 +1385,11 @@ template <int N> struct C;
 template <class T1, int N> struct D;
 template <class T1, class T2, int N = 17> struct E;
 
-eval<A<int>> eA;                // OK: matches partial specialization of \tcode{eval}
-eval<B<int, float>> eB;         // OK: matches partial specialization of \tcode{eval}
-eval<C<17>> eC;                 // error: \tcode{C} does not match \tcode{TT} in partial specialization
-eval<D<int, 17>> eD;            // error: \tcode{D} does not match \tcode{TT} in partial specialization
-eval<E<int, float>> eE;         // error: \tcode{E} does not match \tcode{TT} in partial specialization
+eval<A<int>> eA;            // OK: matches partial specialization of \tcode{eval}
+eval<B<int, float>> eB;     // OK: matches partial specialization of \tcode{eval}
+eval<C<17>> eC;             // error: \tcode{C} does not match \tcode{TT} in partial specialization
+eval<D<int, 17>> eD;        // error: \tcode{D} does not match \tcode{TT} in partial specialization
+eval<E<int, float>> eE;     // error: \tcode{E} does not match \tcode{TT} in partial specialization
 \end{codeblock}
 \end{example}
 \begin{example}
@@ -4971,9 +4971,9 @@ struct C : A, T {
   int g() { return m; }         // finds \tcode{A::m} in the template definition context
 };
 
-template int C<B>::f();         // error: finds both \tcode{A::m} and \tcode{B::m}
-template int C<B>::g();         // OK: transformation to class member access syntax
-                                // does not occur in the template definition context; see~\ref{class.mfct.non-static}
+template int C<B>::f();     // error: finds both \tcode{A::m} and \tcode{B::m}
+template int C<B>::g();     // OK: transformation to class member access syntax
+                            // does not occur in the template definition context; see~\ref{class.mfct.non-static}
 \end{codeblock}
 \end{example}
 

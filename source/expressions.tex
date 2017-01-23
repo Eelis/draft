@@ -2281,8 +2281,8 @@ void f1(int i) {
   auto m1 = [=]{
     int const M = 30;
     auto m2 = [i]{
-      int x[N][M];              // OK: \tcode{N} and \tcode{M} are not odr-used
-      x[0][0] = i;              // OK: \tcode{i} is explicitly captured by \tcode{m2} and implicitly captured by \tcode{m1}
+      int x[N][M];          // OK: \tcode{N} and \tcode{M} are not odr-used
+      x[0][0] = i;          // OK: \tcode{i} is explicitly captured by \tcode{m2} and implicitly captured by \tcode{m1}
     };
   };
   struct s1 {
@@ -2314,7 +2314,7 @@ struct s2 {
   }
   auto g() {
     return [] {
-      return [*this] { };       // error: \tcode{*this} not captured by outer \grammarterm{lambda-expression}
+      return [*this] { };   // error: \tcode{*this} not captured by outer \grammarterm{lambda-expression}
     }();
   }
 };
