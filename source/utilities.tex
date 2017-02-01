@@ -106,15 +106,15 @@ namespace std {
   template<class T, T...>
     struct integer_sequence;
   template<size_t... I>
-    using index_sequence = integer_sequence<size_t, I...>;
+    using @\libglobal{index_sequence}@ = integer_sequence<size_t, I...>;
 
   template<class T, T N>
     using make_integer_sequence = integer_sequence<T, @\seebelow{}@>;
   template<size_t N>
-    using make_index_sequence = make_integer_sequence<size_t, N>;
+    using @\libglobal{make_index_sequence}@ = make_integer_sequence<size_t, N>;
 
   template<class... T>
-    using index_sequence_for = make_index_sequence<sizeof...(T)>;
+    using @\libglobal{index_sequence_for}@ = make_index_sequence<sizeof...(T)>;
 
   // \ref{pairs}, class template \tcode{pair}
   template<class T1, class T2>
@@ -288,7 +288,7 @@ of forwarding functions.
 \indextext{signal-safe!\idxcode{forward}}%
 \indextext{signal-safe!\idxcode{move}}%
 \indextext{signal-safe!\idxcode{move_if_noexcept}}%
-All functions specified in this subclause are signal-safe\iref{support.signal}.
+All functions specified in this subclause are \deflinkx{signal-safe}{evaluation!signal-safe}{support.signal}.
 
 \indexlibraryglobal{forward}%
 \indextext{\idxcode{forward}}%
@@ -408,7 +408,7 @@ template<class T> constexpr add_const_t<T>& as_const(T& t) noexcept;
 
 \pnum
 The library provides the function template \tcode{declval} to simplify the definition of
-expressions which occur as unevaluated operands\iref{expr.prop}.
+expressions which occur as \deflinkx{unevaluated operands}{unevaluated operand}{expr.prop}.
 
 \indexlibraryglobal{declval}%
 \begin{itemdecl}
@@ -1192,7 +1192,7 @@ inline constexpr piecewise_construct_t piecewise_construct{};
 The \keyword{struct} \tcode{piecewise_construct_t} is an empty class type
 used as a unique type to disambiguate constructor and function overloading. Specifically,
 \tcode{pair} has a constructor with \tcode{piecewise_construct_t} as the
-first argument, immediately followed by two \tcode{tuple}\iref{tuple} arguments used
+first argument, immediately followed by two \link{\tcode{tuple}}{tuple} arguments used
 for piecewise construction of the elements of the \tcode{pair} object.
 
 \rSec1[tuple]{Tuples}
@@ -1683,7 +1683,7 @@ template<class Alloc, class U1, class U2>
 \pnum
 \effects
 Equivalent to the preceding constructors except that each element is constructed with
-uses-allocator construction\iref{allocator.uses.construction}.
+\deflink{uses-allocator construction}{allocator.uses.construction}.
 \end{itemdescr}
 
 \rSec3[tuple.assign]{Assignment}
@@ -5221,6 +5221,7 @@ no complexity requirements.
 \rSec2[variant.monostate]{Class \tcode{monostate}}%
 \indexlibraryglobal{monostate}%
 
+\indexlibrary{\idxcode{monostate}}%
 \begin{itemdecl}
 struct monostate{};
 \end{itemdecl}
@@ -5383,7 +5384,8 @@ public:
 \end{codeblock}
 
 \pnum
-Objects of type \tcode{bad_any_cast} are thrown by a failed \tcode{any_cast}\iref{any.nonmembers}.
+Objects of type \tcode{bad_any_cast} are thrown by a failed
+\libglobalref{any_cast}.
 
 \indexlibrarymember{what}{bad_any_cast}%
 \begin{itemdecl}
@@ -5964,7 +5966,7 @@ and manipulating fixed-size sequences of bits.
 
 \begin{codeblock}
 #include <string>
-#include <iosfwd>   // for \tcode{istream}\iref{istream.syn}, \tcode{ostream}\iref{ostream.syn}, see \ref{iosfwd.syn}
+#include <iosfwd>   // for \link{\tcode{istream}}{istream.syn}, \link{\tcode{ostream}}{ostream.syn}, see \ref{iosfwd.syn}
 
 namespace std {
   template<size_t N> class bitset;
@@ -6139,8 +6141,8 @@ constexpr bitset(unsigned long long val) noexcept;
 \effects
 Initializes the first \tcode{M} bit positions to the corresponding bit
 values in \tcode{val}.
-\tcode{M} is the smaller of \tcode{N} and the number of bits in the value
-representation\iref{basic.types} of \tcode{unsigned long long}.
+\tcode{M} is the smaller of \tcode{N} and the number of bits in the
+\deflinkx{value representation}{representation!value}{basic.types} of \tcode{unsigned long long}.
 If \tcode{M < N}, the remaining bit positions are initialized to zero.
 \end{itemdescr}
 
@@ -6678,8 +6680,8 @@ Nothing.
 
 \pnum
 \remarks
-For the purpose of determining the presence of a data
-race\iref{intro.multithread}, any access or update through the resulting
+For the purpose of determining the presence of a
+\deflink{data race}{intro.multithread}, any access or update through the resulting
 reference potentially accesses or modifies, respectively, the entire
 underlying bitset.
 \end{itemdescr}
@@ -6744,7 +6746,7 @@ template<class charT, class traits, size_t N>
 
 \begin{itemdescr}
 \pnum
-A formatted input function\iref{istream.formatted}.
+A \link{formatted input function}{istream.formatted}.
 
 \pnum
 \effects
@@ -8178,13 +8180,13 @@ otherwise, \tcode{\{a.allocate(n), n\}}.
 All specializations of the default allocator meet the
 allocator completeness requirements\iref{allocator.requirements.completeness}.
 
-\indexlibraryglobal{allocator}%
 \indexlibrarymember{value_type}{allocator}%
 \indexlibrarymember{size_type}{allocator}%
 \indexlibrarymember{difference_type}{allocator}%
 \indexlibrarymember{propagate_on_container_move_assignment}{allocator}%
 \indexlibrarymember{is_always_equal}{allocator}%
 \indexlibrarymember{operator=}{allocator}%
+\indexlibraryglobal{allocator}%
 \begin{codeblock}
 namespace std {
   template<class T> class allocator {
@@ -8215,7 +8217,7 @@ is \tcode{true} for any \tcode{T}.
 
 \pnum
 Except for the destructor, member functions of the default allocator shall not introduce
-data races\iref{intro.multithread} as a result of concurrent calls to those member
+\deflinkx{data races}{data race}{intro.multithread} as a result of concurrent calls to those member
 functions from different threads. Calls to these functions that allocate or deallocate a
 particular unit of storage shall occur in a single total order, and each such
 deallocation call shall happen before the next allocation (if any) in this order.
@@ -8243,7 +8245,7 @@ A pointer to the initial element of an array of \tcode{n} \tcode{T}.
 \pnum
 \remarks
 The storage for the array
-is obtained by calling \tcode{::operator new}\iref{new.delete},
+is obtained by calling \link{\tcode{::operator new}}{new.delete},
 but it is unspecified when or how often this
 function is called.
 This function starts the lifetime of the array object,
@@ -8309,7 +8311,7 @@ Deallocates the storage referenced by \tcode{p}.
 \pnum
 \remarks
 Uses
-\tcode{::operator delete}\iref{new.delete},
+\link{\tcode{::operator delete}}{new.delete},
 but it is unspecified
 when this function is called.
 \end{itemdescr}
@@ -8604,8 +8606,9 @@ namespace std {
 \pnum
 The default type for the template parameter \tcode{D} is
 \tcode{default_delete}. A client-supplied template argument
-\tcode{D} shall be a function
-object type\iref{function.objects}, lvalue reference to function, or
+\tcode{D} shall be a
+\deflinkx{function object type}{function object!type}{function.objects},
+lvalue reference to function, or
 lvalue reference to function object type
 for which, given
 a value \tcode{d} of type \tcode{D} and a value
@@ -9807,7 +9810,7 @@ In the constructor definitions below,
 enables \tcode{shared_from_this} with \tcode{p},
 for a pointer \tcode{p} of type \tcode{Y*},
 means that if \tcode{Y} has an unambiguous and accessible base class
-that is a specialization of \tcode{enable_shared_from_this}\iref{util.smartptr.enab},
+that is a specialization of \link{\tcode{enable_shared_from_this}}{util.smartptr.enab},
 then \tcode{remove_cv_t<Y>*} shall be implicitly convertible to \tcode{T*} and
 the constructor evaluates the statement:
 \begin{codeblock}
@@ -12709,8 +12712,7 @@ Calls \tcode{release()}.
 
 \rSec3[mem.res.pool.mem]{Members}
 
-\indexlibrarymember{release}{synchronized_pool_resource}%
-\indexlibrarymember{release}{unsynchronized_pool_resource}%
+\indexlibrarymember{release}{synchronized_pool_resource}\indexlibrarymember{release}{unsynchronized_pool_resource}%
 \begin{itemdecl}
 void release();
 \end{itemdecl}
@@ -13466,8 +13468,8 @@ a.outer_allocator() == b.outer_allocator() && a.inner_allocator() == b.inner_all
 \rSec2[function.objects.general]{General}
 
 \pnum
-A \defnx{function object type}{function object!type} is an object
-type\iref{basic.types} that can be the type of the
+A \defnx{function object type}{function object!type} is an
+\deflink{object type}{basic.types} that can be the type of the
 \grammarterm{postfix-expression} in a function call
 (\ref{expr.call}, \ref{over.match.call}).
 \begin{footnote}
@@ -13477,7 +13479,7 @@ which has a conversion to a pointer to function.
 \end{footnote}
 A \defn{function object} is an
 object of a function object type. In the places where one would expect to pass a
-pointer to a function to an algorithmic template\iref{algorithms}, the
+pointer to a function to an \link{algorithmic template}{algorithms}, the
 interface is specified to accept a function object. This not only makes
 algorithmic templates work with pointers to functions, but also enables them to
 work with arbitrary function objects.
@@ -13669,7 +13671,7 @@ A \defn{call signature} is the name of a return type followed by a
 parenthesized comma-separated list of zero or more argument types.
 
 \pnum
-A \defnadj{callable}{type} is a function object type\iref{function.objects} or a pointer to member.
+A \defnadj{callable}{type} is a \deflinkx{function object type}{function object!type}{function.objects} or a pointer to member.
 
 \pnum
 A \defnadj{callable}{object} is an object of a callable type.
@@ -13740,7 +13742,7 @@ to \tcode{R}.
 \indextext{call wrapper}%
 \indextext{call wrapper!simple}%
 \indextext{call wrapper!forwarding}%
-Every call wrapper\iref{func.def} meets the \oldconcept{MoveConstructible}
+Every \deflink{call wrapper}{func.def} meets the \oldconcept{MoveConstructible}
 and \oldconcept{Destructible} requirements.
 An \defn{argument forwarding call wrapper} is a
 call wrapper that can be called with an arbitrary argument list
@@ -13772,7 +13774,7 @@ where \cv{} shall be neither \tcode{volatile} nor \tcode{const volatile}.
 A \defn{call pattern} defines the semantics of invoking
 a perfect forwarding call wrapper.
 A postfix call performed on a perfect forwarding call wrapper is
-expression-equivalent\iref{defns.expression-equivalent} to
+\link{expression-equivalent}{defns.expression-equivalent} to
 an expression \tcode{e} determined from its call pattern \tcode{cp}
 by replacing all occurrences
 of the arguments of the call wrapper and its state entities
@@ -13804,6 +13806,7 @@ if the types of their corresponding state entities are the same.
 \rSec2[func.invoke]{\tcode{invoke} functions}
 \indexlibraryglobal{invoke}%
 \indexlibrary{invoke@\tcode{\placeholder{INVOKE}}}%
+\indexlibraryglobal{invoke}%
 \begin{itemdecl}
 template<class F, class... Args>
   constexpr invoke_result_t<F, Args...> invoke(F&& f, Args&&... args)
@@ -13817,7 +13820,8 @@ template<class F, class... Args>
 
 \pnum
 \returns
-\tcode{\placeholdernc{INVOKE}(std::forward<F>(f), std::forward<Args>(args)...)}\iref{func.require}.
+\indexlink{\tcode{\placeholder{INVOKE}}}{libraryindex}{invoke@\tcode{\placeholder{INVOKE}}}{func.require}%
+\tcode{(std::forward<F>(f), std::forward<Args>(args)...)}.
 \end{itemdescr}
 
 \indexlibraryglobal{invoke_r}%
@@ -13877,7 +13881,8 @@ namespace std {
 around a reference to an object or function of type \tcode{T}.
 
 \pnum
-\tcode{reference_wrapper<T>} is a trivially copyable type\iref{basic.types}.
+\tcode{reference_wrapper<T>} is a
+\deflinkx{trivially copyable type}{type!trivially copyable}{basic.types}.
 
 \pnum
 The template parameter \tcode{T} of \tcode{reference_wrapper}
@@ -15586,23 +15591,23 @@ namespace std {
 \pnum
 The \tcode{function} class template provides polymorphic wrappers that
 generalize the notion of a function pointer. Wrappers can store, copy,
-and call arbitrary callable objects\iref{func.def}, given a call
-signature\iref{func.def}, allowing functions to be first-class objects.
+and call arbitrary \deflinkx{callable objects}{object!callable}{func.def}, given a
+\deflink{call signature}{func.def}, allowing functions to be first-class objects.
 
 \pnum
 \indextext{callable type}%
-A callable type\iref{func.def} \tcode{F}
+A \deflinkx{callable type}{type!callable}{func.def} \tcode{F}
 is \defn{Lvalue-Callable} for argument
 types \tcode{ArgTypes}
 and return type \tcode{R}
 if the expression
 \tcode{\placeholdernc{INVOKE}<R>(declval<F\&>(), declval<ArgTypes>()...)},
-considered as an unevaluated operand\iref{expr.prop}, is
+considered as an \deflink{unevaluated operand}{expr.prop}, is
 well-formed\iref{func.require}.
 
 \pnum
-The \tcode{function} class template is a call
-wrapper\iref{func.def} whose call signature\iref{func.def}
+The \tcode{function} class template is a
+\deflink{call wrapper}{func.def} whose \deflink{call signature}{func.def}
 is \tcode{R(ArgTypes...)}.
 
 \pnum
@@ -15897,8 +15902,7 @@ explicit operator bool() const noexcept;
 
 \rSec4[func.wrap.func.inv]{Invocation}
 
-\indexlibrary{\idxcode{function}!invocation}%
-\indexlibrarymember{operator()}{function}%
+\indexlibrary{\idxcode{function}!invocation}\indexlibrarymember{operator()}{function}%
 \begin{itemdecl}
 R operator()(ArgTypes... args) const;
 \end{itemdecl}
@@ -15907,7 +15911,7 @@ R operator()(ArgTypes... args) const;
 \pnum
 \returns
 \tcode{\placeholdernc{INVOKE}<R>(f, std::forward<ArgTypes>(args)...)}\iref{func.require},
-where \tcode{f} is the target object\iref{func.def} of \tcode{*this}.
+where \tcode{f} is the \deflink{target object}{func.def} of \tcode{*this}.
 
 \pnum
 \throws
@@ -16299,7 +16303,7 @@ these values are \tcode{false}:
 \tcode{is_copy_assignable_v<H>}, and
 \tcode{is_move_assignable_v<H>}.
 Disabled specializations of \tcode{hash}
-are not function object types\iref{function.objects}.
+are not \deflinkx{function object types}{function object!type}{function.objects}.
 \begin{note}
 This means that the specialization of \tcode{hash} exists, but
 any attempts to use it as a \oldconcept{Hash} will be ill-formed.
@@ -16353,7 +16357,7 @@ property being described. It shall be \oldconcept{DefaultConstructible},
 and publicly and unambiguously derived, directly or indirectly, from
 its \defn{base characteristic}, which is
 a specialization of the template
-\tcode{integral_constant}\iref{meta.help}, with
+\libglobalref{integral_constant}, with
 the arguments to the template \tcode{integral_constant} determined by the
 requirements for the particular property being described.
 The member names of the base characteristic shall not be hidden and shall be
@@ -16369,7 +16373,7 @@ and publicly and unambiguously derived, directly or
 indirectly, from
 its \term{base characteristic}, which is a specialization
 of the template
-\tcode{integral_constant}\iref{meta.help}, with
+\libglobalref{integral_constant}, with
 the arguments to the template \tcode{integral_constant} determined by the
 requirements for the particular relationship being described.
 The member names of the base characteristic shall not be hidden and shall be
@@ -16530,17 +16534,17 @@ namespace std {
   template<class T> struct add_cv;
 
   template<class T>
-    using @\libglobal{remove_const_t}@    = typename remove_const<T>::type;
+    using @\libglobal{remove_const_t}@    = typename @\libglobalref{remove_const}@<T>::type;
   template<class T>
-    using @\libglobal{remove_volatile_t}@ = typename remove_volatile<T>::type;
+    using @\libglobal{remove_volatile_t}@ = typename @\libglobalref{remove_volatile}@<T>::type;
   template<class T>
-    using @\libglobal{remove_cv_t}@       = typename remove_cv<T>::type;
+    using @\libglobal{remove_cv_t}@       = typename @\libglobalref{remove_cv}@<T>::type;
   template<class T>
-    using @\libglobal{add_const_t}@       = typename add_const<T>::type;
+    using @\libglobal{add_const_t}@       = typename @\libglobalref{add_const}@<T>::type;
   template<class T>
-    using @\libglobal{add_volatile_t}@    = typename add_volatile<T>::type;
+    using @\libglobal{add_volatile_t}@    = typename @\libglobalref{add_volatile}@<T>::type;
   template<class T>
-    using @\libglobal{add_cv_t}@          = typename add_cv<T>::type;
+    using @\libglobal{add_cv_t}@          = typename @\libglobalref{add_cv}@<T>::type;
 
   // \ref{meta.trans.ref}, reference modifications
   template<class T> struct remove_reference;
@@ -16548,38 +16552,38 @@ namespace std {
   template<class T> struct add_rvalue_reference;
 
   template<class T>
-    using @\libglobal{remove_reference_t}@     = typename remove_reference<T>::type;
+    using @\libglobal{remove_reference_t}@     = typename @\libglobalref{remove_reference}@<T>::type;
   template<class T>
-    using @\libglobal{add_lvalue_reference_t}@ = typename add_lvalue_reference<T>::type;
+    using @\libglobal{add_lvalue_reference_t}@ = typename @\libglobalref{add_lvalue_reference}@<T>::type;
   template<class T>
-    using @\libglobal{add_rvalue_reference_t}@ = typename add_rvalue_reference<T>::type;
+    using @\libglobal{add_rvalue_reference_t}@ = typename @\libglobalref{add_rvalue_reference}@<T>::type;
 
   // \ref{meta.trans.sign}, sign modifications
   template<class T> struct make_signed;
   template<class T> struct make_unsigned;
 
   template<class T>
-    using @\libglobal{make_signed_t}@   = typename make_signed<T>::type;
+    using @\libglobal{make_signed_t}@   = typename @\libglobalref{make_signed}@<T>::type;
   template<class T>
-    using @\libglobal{make_unsigned_t}@ = typename make_unsigned<T>::type;
+    using @\libglobal{make_unsigned_t}@ = typename @\libglobalref{make_unsigned}@<T>::type;
 
   // \ref{meta.trans.arr}, array modifications
   template<class T> struct remove_extent;
   template<class T> struct remove_all_extents;
 
   template<class T>
-    using @\libglobal{remove_extent_t}@      = typename remove_extent<T>::type;
+    using @\libglobal{remove_extent_t}@      = typename @\libglobalref{remove_extent}@<T>::type;
   template<class T>
-    using @\libglobal{remove_all_extents_t}@ = typename remove_all_extents<T>::type;
+    using @\libglobal{remove_all_extents_t}@ = typename @\libglobalref{remove_all_extents}@<T>::type;
 
   // \ref{meta.trans.ptr}, pointer modifications
   template<class T> struct remove_pointer;
   template<class T> struct add_pointer;
 
   template<class T>
-    using @\libglobal{remove_pointer_t}@ = typename remove_pointer<T>::type;
+    using @\libglobal{remove_pointer_t}@ = typename @\libglobalref{remove_pointer}@<T>::type;
   template<class T>
-    using @\libglobal{add_pointer_t}@    = typename add_pointer<T>::type;
+    using @\libglobal{add_pointer_t}@    = typename @\libglobalref{add_pointer}@<T>::type;
 
   // \ref{meta.trans.other}, other transformations
   template<class T> struct type_identity;
@@ -16600,31 +16604,31 @@ namespace std {
   template<class T> struct unwrap_ref_decay;
 
   template<class T>
-    using @\libglobal{type_identity_t}@    = typename type_identity<T>::type;
+    using @\libglobal{type_identity_t}@    = typename @\libglobalref{type_identity}@<T>::type;
   template<size_t Len, size_t Align = @\textit{default-alignment}@> // see \ref{meta.trans.other}
-    using @\libglobal{aligned_storage_t}@  = typename aligned_storage<Len, Align>::type;
+    using @\libglobal{aligned_storage_t}@  = typename @\libglobalref{aligned_storage}@<Len, Align>::type;
   template<size_t Len, class... Types>
-    using @\libglobal{aligned_union_t}@    = typename aligned_union<Len, Types...>::type;
+    using @\libglobal{aligned_union_t}@    = typename @\libglobalref{aligned_union}@<Len, Types...>::type;
   template<class T>
-    using @\libglobal{remove_cvref_t}@     = typename remove_cvref<T>::type;
+    using @\libglobal{remove_cvref_t}@     = typename @\libglobalref{remove_cvref}@<T>::type;
   template<class T>
-    using @\libglobal{decay_t}@            = typename decay<T>::type;
+    using @\libglobal{decay_t}@            = typename @\libglobalref{decay}@<T>::type;
   template<bool b, class T = void>
-    using @\libglobal{enable_if_t}@        = typename enable_if<b, T>::type;
+    using @\libglobal{enable_if_t}@        = typename @\libglobalref{enable_if}@<b, T>::type;
   template<bool b, class T, class F>
-    using @\libglobal{conditional_t}@      = typename conditional<b, T, F>::type;
+    using @\libglobal{conditional_t}@      = typename @\libglobalref{conditional}@<b, T, F>::type;
   template<class... T>
-    using @\libglobal{common_type_t}@      = typename common_type<T...>::type;
+    using @\libglobal{common_type_t}@      = typename @\libglobalref{common_type}@<T...>::type;
   template<class... T>
-    using @\libglobal{common_reference_t}@ = typename common_reference<T...>::type;
+    using @\libglobal{common_reference_t}@ = typename @\libglobalref{common_reference}@<T...>::type;
   template<class T>
-    using @\libglobal{underlying_type_t}@  = typename underlying_type<T>::type;
+    using @\libglobal{underlying_type_t}@  = typename @\libglobalref{underlying_type}@<T>::type;
   template<class Fn, class... ArgTypes>
-    using @\libglobal{invoke_result_t}@    = typename invoke_result<Fn, ArgTypes...>::type;
+    using @\libglobal{invoke_result_t}@    = typename @\libglobalref{invoke_result}@<Fn, ArgTypes...>::type;
   template<class T>
-    using unwrap_reference_t = typename unwrap_reference<T>::type;
+    using unwrap_reference_t = typename @\libglobalref{unwrap_reference}@<T>::type;
   template<class T>
-    using unwrap_ref_decay_t = typename unwrap_ref_decay<T>::type;
+    using unwrap_ref_decay_t = typename @\libglobalref{unwrap_ref_decay}@<T>::type;
   template<class...>
     using @\libglobal{void_t}@             = void;
 
@@ -16635,192 +16639,192 @@ namespace std {
 
   // \ref{meta.unary.cat}, primary type categories
   template<class T>
-    inline constexpr bool @\libglobal{is_void_v}@ = is_void<T>::value;
+    inline constexpr bool @\libglobal{is_void_v}@ = @\libglobalref{is_void}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_null_pointer_v}@ = is_null_pointer<T>::value;
+    inline constexpr bool @\libglobal{is_null_pointer_v}@ = @\libglobalref{is_null_pointer}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_integral_v}@ = is_integral<T>::value;
+    inline constexpr bool @\libglobal{is_integral_v}@ = @\libglobalref{is_integral}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_floating_point_v}@ = is_floating_point<T>::value;
+    inline constexpr bool @\libglobal{is_floating_point_v}@ = @\libglobalref{is_floating_point}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_array_v}@ = is_array<T>::value;
+    inline constexpr bool @\libglobal{is_array_v}@ = @\libglobalref{is_array}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_pointer_v}@ = is_pointer<T>::value;
+    inline constexpr bool @\libglobal{is_pointer_v}@ = @\libglobalref{is_pointer}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_lvalue_reference_v}@ = is_lvalue_reference<T>::value;
+    inline constexpr bool @\libglobal{is_lvalue_reference_v}@ = @\libglobalref{is_lvalue_reference}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_rvalue_reference_v}@ = is_rvalue_reference<T>::value;
+    inline constexpr bool @\libglobal{is_rvalue_reference_v}@ = @\libglobalref{is_rvalue_reference}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_member_object_pointer_v}@ = is_member_object_pointer<T>::value;
+    inline constexpr bool @\libglobal{is_member_object_pointer_v}@ = @\libglobalref{is_member_object_pointer}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_member_function_pointer_v}@ = is_member_function_pointer<T>::value;
+    inline constexpr bool @\libglobal{is_member_function_pointer_v}@ = @\libglobalref{is_member_function_pointer}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_enum_v}@ = is_enum<T>::value;
+    inline constexpr bool @\libglobal{is_enum_v}@ = @\libglobalref{is_enum}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_union_v}@ = is_union<T>::value;
+    inline constexpr bool @\libglobal{is_union_v}@ = @\libglobalref{is_union}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_class_v}@ = is_class<T>::value;
+    inline constexpr bool @\libglobal{is_class_v}@ = @\libglobalref{is_class}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_function_v}@ = is_function<T>::value;
+    inline constexpr bool @\libglobal{is_function_v}@ = @\libglobalref{is_function}@<T>::value;
 
   // \ref{meta.unary.comp}, composite type categories
   template<class T>
-    inline constexpr bool @\libglobal{is_reference_v}@ = is_reference<T>::value;
+    inline constexpr bool @\libglobal{is_reference_v}@ = @\libglobalref{is_reference}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_arithmetic_v}@ = is_arithmetic<T>::value;
+    inline constexpr bool @\libglobal{is_arithmetic_v}@ = @\libglobalref{is_arithmetic}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_fundamental_v}@ = is_fundamental<T>::value;
+    inline constexpr bool @\libglobal{is_fundamental_v}@ = @\libglobalref{is_fundamental}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_object_v}@ = is_object<T>::value;
+    inline constexpr bool @\libglobal{is_object_v}@ = @\libglobalref{is_object}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_scalar_v}@ = is_scalar<T>::value;
+    inline constexpr bool @\libglobal{is_scalar_v}@ = @\libglobalref{is_scalar}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_compound_v}@ = is_compound<T>::value;
+    inline constexpr bool @\libglobal{is_compound_v}@ = @\libglobalref{is_compound}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_member_pointer_v}@ = is_member_pointer<T>::value;
+    inline constexpr bool @\libglobal{is_member_pointer_v}@ = @\libglobalref{is_member_pointer}@<T>::value;
 
   // \ref{meta.unary.prop}, type properties
   template<class T>
-    inline constexpr bool @\libglobal{is_const_v}@ = is_const<T>::value;
+    inline constexpr bool @\libglobal{is_const_v}@ = @\libglobalref{is_const}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_volatile_v}@ = is_volatile<T>::value;
+    inline constexpr bool @\libglobal{is_volatile_v}@ = @\libglobalref{is_volatile}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_trivial_v}@ = is_trivial<T>::value;
+    inline constexpr bool @\libglobal{is_trivial_v}@ = @\libglobalref{is_trivial}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_trivially_copyable_v}@ = is_trivially_copyable<T>::value;
+    inline constexpr bool @\libglobal{is_trivially_copyable_v}@ = @\libglobalref{is_trivially_copyable}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_standard_layout_v}@ = is_standard_layout<T>::value;
+    inline constexpr bool @\libglobal{is_standard_layout_v}@ = @\libglobalref{is_standard_layout}@<T>::value;
   template<class T>
     inline constexpr bool @\libglobal{is_empty_v}@ = is_empty<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_polymorphic_v}@ = is_polymorphic<T>::value;
+    inline constexpr bool @\libglobal{is_polymorphic_v}@ = @\libglobalref{is_polymorphic}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_abstract_v}@ = is_abstract<T>::value;
+    inline constexpr bool @\libglobal{is_abstract_v}@ = @\libglobalref{is_abstract}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_final_v}@ = is_final<T>::value;
+    inline constexpr bool @\libglobal{is_final_v}@ = @\libglobalref{is_final}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_aggregate_v}@ = is_aggregate<T>::value;
+    inline constexpr bool @\libglobal{is_aggregate_v}@ = @\libglobalref{is_aggregate}@<T>::value;
   template<class T>
     inline constexpr bool @\libglobal{is_signed_v}@ = is_signed<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_unsigned_v}@ = is_unsigned<T>::value;
+    inline constexpr bool @\libglobal{is_unsigned_v}@ = @\libglobalref{is_unsigned}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_bounded_array_v}@ = is_bounded_array<T>::value;
+    inline constexpr bool @\libglobal{is_bounded_array_v}@ = @\libglobalref{is_bounded_array}@<T>::value;
   template<class T>
     inline constexpr bool @\libglobal{is_unbounded_array_v}@ = is_unbounded_array<T>::value;
   template<class T>
     inline constexpr bool @\libglobal{is_scoped_enum_v}@ = is_scoped_enum<T>::value;
   template<class T, class... Args>
-    inline constexpr bool @\libglobal{is_constructible_v}@ = is_constructible<T, Args...>::value;
+    inline constexpr bool @\libglobal{is_constructible_v}@ = @\libglobalref{is_constructible}@<T, Args...>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_default_constructible_v}@ = is_default_constructible<T>::value;
+    inline constexpr bool @\libglobal{is_default_constructible_v}@ = @\libglobalref{is_default_constructible}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_copy_constructible_v}@ = is_copy_constructible<T>::value;
+    inline constexpr bool @\libglobal{is_copy_constructible_v}@ = @\libglobalref{is_copy_constructible}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_move_constructible_v}@ = is_move_constructible<T>::value;
+    inline constexpr bool @\libglobal{is_move_constructible_v}@ = @\libglobalref{is_move_constructible}@<T>::value;
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_assignable_v}@ = is_assignable<T, U>::value;
+    inline constexpr bool @\libglobal{is_assignable_v}@ = @\libglobalref{is_assignable}@<T, U>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_copy_assignable_v}@ = is_copy_assignable<T>::value;
+    inline constexpr bool @\libglobal{is_copy_assignable_v}@ = @\libglobalref{is_copy_assignable}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_move_assignable_v}@ = is_move_assignable<T>::value;
+    inline constexpr bool @\libglobal{is_move_assignable_v}@ = @\libglobalref{is_move_assignable}@<T>::value;
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_swappable_with_v}@ = is_swappable_with<T, U>::value;
+    inline constexpr bool @\libglobal{is_swappable_with_v}@ = @\libglobalref{is_swappable_with}@<T, U>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_swappable_v}@ = is_swappable<T>::value;
+    inline constexpr bool @\libglobal{is_swappable_v}@ = @\libglobalref{is_swappable}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_destructible_v}@ = is_destructible<T>::value;
+    inline constexpr bool @\libglobal{is_destructible_v}@ = @\libglobalref{is_destructible}@<T>::value;
   template<class T, class... Args>
     inline constexpr bool is_trivially_constructible_v
-      = is_trivially_constructible<T, Args...>::value;
+      = @\libglobalref{is_trivially_constructible}@<T, Args...>::value;
   template<class T>
     inline constexpr bool is_trivially_default_constructible_v
-      = is_trivially_default_constructible<T>::value;
+      = @\libglobalref{is_trivially_default_constructible}@<T>::value;
   template<class T>
     inline constexpr bool is_trivially_copy_constructible_v
-      = is_trivially_copy_constructible<T>::value;
+      = @\libglobalref{is_trivially_copy_constructible}@<T>::value;
   template<class T>
     inline constexpr bool is_trivially_move_constructible_v
-      = is_trivially_move_constructible<T>::value;
+      = @\libglobalref{is_trivially_move_constructible}@<T>::value;
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_trivially_assignable_v}@ = is_trivially_assignable<T, U>::value;
+    inline constexpr bool @\libglobal{is_trivially_assignable_v}@ = @\libglobalref{is_trivially_assignable}@<T, U>::value;
   template<class T>
     inline constexpr bool is_trivially_copy_assignable_v
-      = is_trivially_copy_assignable<T>::value;
+      = @\libglobalref{is_trivially_copy_assignable}@<T>::value;
   template<class T>
     inline constexpr bool is_trivially_move_assignable_v
-      = is_trivially_move_assignable<T>::value;
+      = @\libglobalref{is_trivially_move_assignable}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_trivially_destructible_v}@ = is_trivially_destructible<T>::value;
+    inline constexpr bool @\libglobal{is_trivially_destructible_v}@ = @\libglobalref{is_trivially_destructible}@<T>::value;
   template<class T, class... Args>
     inline constexpr bool is_nothrow_constructible_v
-      = is_nothrow_constructible<T, Args...>::value;
+      = @\libglobalref{is_nothrow_constructible}@<T, Args...>::value;
   template<class T>
     inline constexpr bool is_nothrow_default_constructible_v
-      = is_nothrow_default_constructible<T>::value;
+      = @\libglobalref{is_nothrow_default_constructible}@<T>::value;
   template<class T>
     inline constexpr bool is_nothrow_copy_constructible_v
-      = is_nothrow_copy_constructible<T>::value;
+      = @\libglobalref{is_nothrow_copy_constructible}@<T>::value;
   template<class T>
     inline constexpr bool is_nothrow_move_constructible_v
-      = is_nothrow_move_constructible<T>::value;
+      = @\libglobalref{is_nothrow_move_constructible}@<T>::value;
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_nothrow_assignable_v}@ = is_nothrow_assignable<T, U>::value;
+    inline constexpr bool @\libglobal{is_nothrow_assignable_v}@ = @\libglobalref{is_nothrow_assignable}@<T, U>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_nothrow_copy_assignable_v}@ = is_nothrow_copy_assignable<T>::value;
+    inline constexpr bool @\libglobal{is_nothrow_copy_assignable_v}@ = @\libglobalref{is_nothrow_copy_assignable}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_nothrow_move_assignable_v}@ = is_nothrow_move_assignable<T>::value;
+    inline constexpr bool @\libglobal{is_nothrow_move_assignable_v}@ = @\libglobalref{is_nothrow_move_assignable}@<T>::value;
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_nothrow_swappable_with_v}@ = is_nothrow_swappable_with<T, U>::value;
+    inline constexpr bool @\libglobal{is_nothrow_swappable_with_v}@ = @\libglobalref{is_nothrow_swappable_with}@<T, U>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_nothrow_swappable_v}@ = is_nothrow_swappable<T>::value;
+    inline constexpr bool @\libglobal{is_nothrow_swappable_v}@ = @\libglobalref{is_nothrow_swappable}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{is_nothrow_destructible_v}@ = is_nothrow_destructible<T>::value;
+    inline constexpr bool @\libglobal{is_nothrow_destructible_v}@ = @\libglobalref{is_nothrow_destructible}@<T>::value;
   template<class T>
-    inline constexpr bool @\libglobal{has_virtual_destructor_v}@ = has_virtual_destructor<T>::value;
+    inline constexpr bool @\libglobal{has_virtual_destructor_v}@ = @\libglobalref{has_virtual_destructor}@<T>::value;
   template<class T>
     inline constexpr bool has_unique_object_representations_v
-      = has_unique_object_representations<T>::value;
+      = @\libglobalref{has_unique_object_representations}@<T>::value;
 
   // \ref{meta.unary.prop.query}, type property queries
   template<class T>
-    inline constexpr size_t @\libglobal{alignment_of_v}@ = alignment_of<T>::value;
+    inline constexpr size_t @\libglobal{alignment_of_v}@ = @\libglobalref{alignment_of}@<T>::value;
   template<class T>
-    inline constexpr size_t @\libglobal{rank_v}@ = rank<T>::value;
+    inline constexpr size_t @\libglobal{rank_v}@ = @\libglobalref{rank}@<T>::value;
   template<class T, unsigned I = 0>
-    inline constexpr size_t @\libglobal{extent_v}@ = extent<T, I>::value;
+    inline constexpr size_t @\libglobal{extent_v}@ = @\libglobalref{extent}@<T, I>::value;
 
   // \ref{meta.rel}, type relations
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_same_v}@ = is_same<T, U>::value;
+    inline constexpr bool @\libglobal{is_same_v}@ = @\libglobalref{is_same}@<T, U>::value;
   template<class Base, class Derived>
-    inline constexpr bool @\libglobal{is_base_of_v}@ = is_base_of<Base, Derived>::value;
+    inline constexpr bool @\libglobal{is_base_of_v}@ = @\libglobalref{is_base_of}@<Base, Derived>::value;
   template<class From, class To>
-    inline constexpr bool @\libglobal{is_convertible_v}@ = is_convertible<From, To>::value;
+    inline constexpr bool @\libglobal{is_convertible_v}@ = @\libglobalref{is_convertible}@<From, To>::value;
   template<class From, class To>
-    inline constexpr bool @\libglobal{is_nothrow_convertible_v}@ = is_nothrow_convertible<From, To>::value;
+    inline constexpr bool @\libglobal{is_nothrow_convertible_v}@ = @\libglobalref{is_nothrow_convertible}@<From, To>::value;
   template<class T, class U>
-    inline constexpr bool @\libglobal{is_layout_compatible_v}@ = is_layout_compatible<T, U>::value;
+    inline constexpr bool @\libglobal{is_layout_compatible_v}@ = @\libglobalref{is_layout_compatible}@<T, U>::value;
   template<class Base, class Derived>
     inline constexpr bool @\libglobal{is_pointer_interconvertible_base_of_v}@
-      = is_pointer_interconvertible_base_of<Base, Derived>::value;
+      = @\libglobalref{is_pointer_interconvertible_base_of}@<Base, Derived>::value;
   template<class Fn, class... ArgTypes>
-    inline constexpr bool @\libglobal{is_invocable_v}@ = is_invocable<Fn, ArgTypes...>::value;
+    inline constexpr bool @\libglobal{is_invocable_v}@ = @\libglobalref{is_invocable}@<Fn, ArgTypes...>::value;
   template<class R, class Fn, class... ArgTypes>
-    inline constexpr bool @\libglobal{is_invocable_r_v}@ = is_invocable_r<R, Fn, ArgTypes...>::value;
+    inline constexpr bool @\libglobal{is_invocable_r_v}@ = @\libglobalref{is_invocable_r}@<R, Fn, ArgTypes...>::value;
   template<class Fn, class... ArgTypes>
-    inline constexpr bool @\libglobal{is_nothrow_invocable_v}@ = is_nothrow_invocable<Fn, ArgTypes...>::value;
+    inline constexpr bool @\libglobal{is_nothrow_invocable_v}@ = @\libglobalref{is_nothrow_invocable}@<Fn, ArgTypes...>::value;
   template<class R, class Fn, class... ArgTypes>
     inline constexpr bool is_nothrow_invocable_r_v
-      = is_nothrow_invocable_r<R, Fn, ArgTypes...>::value;
+      = @\libglobalref{is_nothrow_invocable_r}@<R, Fn, ArgTypes...>::value;
 
   // \ref{meta.logical}, logical operator traits
   template<class... B>
-    inline constexpr bool @\libglobal{conjunction_v}@ = conjunction<B...>::value;
+    inline constexpr bool @\libglobal{conjunction_v}@ = @\libglobalref{conjunction}@<B...>::value;
   template<class... B>
-    inline constexpr bool @\libglobal{disjunction_v}@ = disjunction<B...>::value;
+    inline constexpr bool @\libglobal{disjunction_v}@ = @\libglobalref{disjunction}@<B...>::value;
   template<class B>
-    inline constexpr bool @\libglobal{negation_v}@ = negation<B>::value;
+    inline constexpr bool @\libglobal{negation_v}@ = @\libglobalref{negation}@<B>::value;
 
   // \ref{meta.member}, member relationships
   template<class S, class M>
@@ -16836,6 +16840,7 @@ namespace std {
 \rSec2[meta.help]{Helper classes}
 
 \indexlibrarymember{value_type}{integral_constant}%
+\indexlibrary{\idxcode{integral_constant}}%
 \begin{codeblock}
 namespace std {
   template<class T, T v> struct integral_constant {
@@ -16921,7 +16926,7 @@ has a \tcode{value} member that evaluates to \tcode{true}.
 \tcode{template<class T>}\br
  \tcode{struct is_array;}           &
 \tcode{T} is an array type\iref{basic.compound} of known or unknown extent    &
-Class template \tcode{array}\iref{array}
+Class template \link{\tcode{array}}{array}
 is not an array type.                   \\ \rowsep
 \indexlibraryglobal{is_pointer}%
 \tcode{template<class T>}\br
@@ -17008,7 +17013,7 @@ For any given type \tcode{T}, the result of applying one of these templates to
 \indexlibraryglobal{is_member_pointer}%
 \tcode{template<class T>}\br
  \tcode{struct is_member_pointer;}      &
- \tcode{T} is a pointer-to-member type\iref{basic.compound}               &   \\
+ \tcode{T} is a \deflink{pointer-to-member}{basic.compound} type               &   \\
 \end{libreqtab3b}
 
 \rSec3[meta.unary.prop]{Type properties}
@@ -17032,7 +17037,7 @@ the argument is a complete type.
 For the purpose of defining the templates in this subclause,
 a function call expression \tcode{declval<T>()} for any type \tcode{T}
 is considered to be a trivial~(\ref{basic.types}, \ref{special}) function call
-that is not an odr-use\iref{basic.def.odr} of \tcode{declval}
+that is not an \link{odr-use}{basic.def.odr} of \tcode{declval}
 in the context of the corresponding definition
 notwithstanding the restrictions of~\ref{declval}.
 
@@ -17186,8 +17191,8 @@ A union is a class type that
 \tcode{template<class T, class U>}\br
   \tcode{struct is_assignable;} &
   The expression \tcode{declval<T>() =} \tcode{declval<U>()} is well-formed
-  when treated as an unevaluated
-  operand\iref{expr.prop}. Access checking is performed as if in a context
+  when treated as an \deflink{unevaluated
+  operand}{expr.prop}. Access checking is performed as if in a context
   unrelated to \tcode{T} and \tcode{U}. Only the validity of the immediate context
   of the assignment expression is considered.
 \begin{tailnote}
@@ -17222,7 +17227,7 @@ The compilation of the
   \tcode{struct is_swappable_with;} &
   The expressions \tcode{swap(declval<T>(), declval<U>())} and
   \tcode{swap(declval<U>(), declval<T>())} are each well-formed
-  when treated as an unevaluated operand\iref{expr.prop}
+  when treated as an \deflink{unevaluated operand}{expr.prop}
   in an overload-resolution context
   for swappable values\iref{swappable.requirements}.
   Access checking is performed as if in a context
@@ -17260,7 +17265,7 @@ The compilation of the
   for which the expression
   \tcode{declval<U\&>().\~U()}
   is well-formed
-  when treated as an unevaluated operand\iref{expr.prop},
+  when treated as an \deflink{unevaluated operand}{expr.prop},
   where \tcode{U} is
   \tcode{remove_all_extents_t<T>}. &
   \tcode{T} shall be a complete type, \cv{}~\keyword{void},
@@ -17725,7 +17730,7 @@ Base classes that are private, protected, or ambiguous
 For the purpose of defining the templates in this subclause,
 a function call expression \tcode{declval<T>()} for any type \tcode{T}
 is considered to be a trivial~(\ref{basic.types}, \ref{special}) function call
-that is not an odr-use\iref{basic.def.odr} of \tcode{declval}
+that is not an \link{odr-use}{basic.def.odr} of \tcode{declval}
 in the context of the corresponding definition
 notwithstanding the restrictions of~\ref{declval}.
 
@@ -17882,7 +17887,7 @@ Each of the templates in \ref{meta.trans} shall be a
 \indexlibraryglobal{add_lvalue_reference}%
 \tcode{template<class T>\br
  struct add_lvalue_reference;}                     &
- If \tcode{T} names a referenceable type\iref{defns.referenceable} then
+ If \tcode{T} names a \link{referenceable type}{defns.referenceable} then
  the member typedef \tcode{type} names \tcode{T\&};
  otherwise, \tcode{type} names \tcode{T}.
  \begin{tailnote}
@@ -17917,14 +17922,14 @@ This rule reflects the semantics of reference collapsing\iref{dcl.ref}.
 \indexlibraryglobal{make_signed}%
 \tcode{template<class T>}\br
  \tcode{struct make_signed;} &
- If \tcode{T} names a (possibly cv-qualified) signed integer
- type\iref{basic.fundamental} then the member typedef
+ If \tcode{T} names a (possibly cv-qualified)
+ \deflinkx{signed integer type}{type!signed integer}{basic.fundamental} then the member typedef
  \tcode{type} names the type \tcode{T}; otherwise,
  if \tcode{T} names a (possibly cv-qualified) unsigned integer
  type then \tcode{type} names the corresponding
  signed integer type, with the same cv-qualifiers as \tcode{T};
- otherwise, \tcode{type} names the signed integer type with smallest
- rank\iref{conv.rank} for which
+ otherwise, \tcode{type} names the signed integer type with \link{smallest
+ rank}{conv.rank} for which
  \tcode{sizeof(T) == sizeof(type)}, with the same
  cv-qualifiers as \tcode{T}.\br
  \mandates \tcode{T} is an integral or enumeration type
@@ -17933,14 +17938,14 @@ This rule reflects the semantics of reference collapsing\iref{dcl.ref}.
 \indexlibraryglobal{make_unsigned}%
 \tcode{template<class T>}\br
  \tcode{struct make_unsigned;} &
- If \tcode{T} names a (possibly cv-qualified) unsigned integer
- type\iref{basic.fundamental} then the member typedef
+ If \tcode{T} names a (possibly cv-qualified)
+ \deflinkx{unsigned integer type}{type!unsigned integer}{basic.fundamental} then the member typedef
  \tcode{type} names the type \tcode{T}; otherwise,
  if \tcode{T} names a (possibly cv-qualified) signed integer
  type then \tcode{type} names the corresponding
  unsigned integer type, with the same cv-qualifiers as \tcode{T};
- otherwise, \tcode{type} names the unsigned integer type with smallest
- rank\iref{conv.rank} for which
+ otherwise, \tcode{type} names the unsigned integer type with \link{smallest
+ rank}{conv.rank} for which
  \tcode{sizeof(T) == sizeof(type)}, with the same
  cv-qualifiers as \tcode{T}.\br
  \mandates \tcode{T} is an integral or enumeration type
@@ -18150,7 +18155,7 @@ argument passing.
  \tcode{struct \libglobal{invoke_result};}
  &
  If the expression \tcode{\placeholdernc{INVOKE}(declval<Fn>(), declval<ArgTypes>()...)}
- is well-formed when treated as an unevaluated operand\iref{expr.prop},
+ is well-formed when treated as an \deflink{unevaluated operand}{expr.prop},
  the member typedef \tcode{type} names the type
  \tcode{decltype(\placeholdernc{INVOKE}(declval<Fn>(), declval<ArgTypes>()...))};
  otherwise, there shall be no member \tcode{type}. Access checking is
@@ -18186,8 +18191,7 @@ argument passing.
 \indexlibraryglobal{aligned_storage}%
 \pnum
 \begin{note}
-A typical implementation would define \tcode{aligned_storage} as:
-
+A typical implementation would define \libglobal{aligned_storage} as:
 \begin{codeblock}
 template<size_t Len, size_t Alignment>
 struct aligned_storage {
@@ -18928,9 +18932,9 @@ namespace std {
 
 \pnum
 The class \tcode{type_index} provides a simple wrapper for
-\tcode{type_info} which can be used as an index type in associative
-containers\iref{associative} and in unordered associative
-containers\iref{unord}.
+\tcode{type_info} which can be used as an index type in
+\link{associative containers}{associative} and in
+\link{unordered associative containers}{unord}.
 
 \rSec2[type.index.members]{\tcode{type_index} members}
 
@@ -19252,18 +19256,13 @@ The header \libheader{execution} declares global objects associated with each ty
 \indexheader{charconv}%
 \begin{codeblock}
 @%
-\indexlibraryglobal{chars_format}%
-\indexlibrarymember{scientific}{chars_format}%
-\indexlibrarymember{fixed}{chars_format}%
-\indexlibrarymember{hex}{chars_format}%
-\indexlibrarymember{general}{chars_format}%
 @namespace std {
   // floating-point format for primitive numerical conversion
-  enum class chars_format {
-    scientific = @\unspec@,
-    fixed = @\unspec@,
-    hex = @\unspec@,
-    general = fixed | scientific
+  enum class @\libglobal{chars_format}@ {
+    @\libmember{scientific}{chars_format}@ = @\unspec@,
+    @\libmember{fixed}{chars_format}@ = @\unspec@,
+    @\libmember{hex}{chars_format}@ = @\unspec@,
+    @\libmember{general}{chars_format}@ = fixed | scientific
   };
 @%
 \indexlibraryglobal{to_chars_result}%
@@ -19365,7 +19364,7 @@ If there are several such representations,
 the representation with the smallest difference from
 the floating-point argument value is chosen,
 resolving any remaining ties using rounding according to
-\tcode{round_to_nearest}\iref{round.style}.
+\libglobalref{round_to_nearest}.
 
 \pnum
 The functions taking a \tcode{chars_format} parameter
@@ -19521,7 +19520,7 @@ the member \tcode{ec} of the return value
 is equal to \tcode{errc::result_out_of_range}.
 Otherwise,
 \tcode{value} is set to the parsed value,
-after rounding according to \tcode{round_to_nearest}\iref{round.style}, and
+after rounding according to \libglobalref{round_to_nearest}, and
 the member \tcode{ec} is value-initialized.
 
 \indexlibraryglobal{from_chars}%

@@ -770,7 +770,6 @@ In all cases,
 (a ``null terminator''\indextext{string!null terminator}),
 and \tcode{size() <= capacity()} is \tcode{true}.
 
-
 \indexlibraryglobal{basic_string}%
 \indexlibrarymember{traits_type}{basic_string}%
 \indexlibrarymember{value_type}{basic_string}%
@@ -1406,7 +1405,7 @@ constexpr basic_string& operator=(basic_string&& str)
 \begin{itemdescr}
 \pnum
 \effects
-Move assigns as a sequence container\iref{sequence.reqmts},
+Move assigns as a \link{sequence container}{sequence.reqmts},
 except that iterators, pointers and references may be invalidated.
 
 \pnum
@@ -3459,7 +3458,6 @@ return basic_string_view<charT, traits>(lhs) @\placeholder{op}@ basic_string_vie
 
 \rSec3[string.special]{\tcode{swap}}
 
-\indexlibrarymember{swap}{basic_string}%
 \begin{itemdecl}
 template<class charT, class traits, class Allocator>
   constexpr void
@@ -3486,7 +3484,7 @@ template<class charT, class traits, class Allocator>
 \begin{itemdescr}
 \pnum
 \effects
-Behaves as a formatted input function\iref{istream.formatted.reqmts}.
+Behaves as a \link{formatted input function}{istream.formatted}.
 After constructing a
 \tcode{sentry}
 object, if the sentry converts to \tcode{true}, calls
@@ -3564,7 +3562,7 @@ template<class charT, class traits, class Allocator>
 \begin{itemdescr}
 \pnum
 \effects
-Behaves as an unformatted input function\iref{istream.unformatted},
+Behaves as an \link{unformatted input function}{istream.unformatted},
 except that it does not affect the value returned by subsequent calls to
 \tcode{basic_istream<>::gcount()}.
 After constructing a
@@ -5114,8 +5112,8 @@ template<class charT, class traits>
 \begin{itemdescr}
 \pnum
 \effects
-Behaves as a formatted output
-function\iref{ostream.formatted.reqmts} of \tcode{os}. Forms a character sequence
+Behaves as a \link{formatted output
+function}{ostream.formatted.reqmts} of \tcode{os}. Forms a character sequence
 \tcode{seq}, initially consisting of the elements defined by the range
 \range{str.begin()}{str.end()}. Determines padding for \tcode{seq}
 as described in~\ref{ostream.formatted.reqmts}.
@@ -5375,13 +5373,13 @@ The contents and meaning of the header \libheaderdef{cstring}
 are the same as the C standard library header \libheader{string.h}.
 
 \pnum
-The functions \tcode{strerror} and \tcode{strtok} are not required to avoid data
-races\iref{res.on.data.races}.
+The functions \tcode{strerror} and \tcode{strtok} are not required to
+\link{avoid data races}{res.on.data.races}.
 
 \pnum
 \indextext{signal-safe!\idxcode{memcpy}}%
 \indextext{signal-safe!\idxcode{memmove}}%
-The functions \tcode{memcpy} and \tcode{memmove} are signal-safe\iref{support.signal}.
+The functions \tcode{memcpy} and \tcode{memmove} are \deflinkx{signal-safe}{evaluation!signal-safe}{support.signal}.
 Both functions implicitly create objects\iref{intro.object}
 in the destination region of storage
 immediately prior to copying the sequence of characters to the destination.
@@ -5391,7 +5389,7 @@ immediately prior to copying the sequence of characters to the destination.
 The functions
 \tcode{strchr}, \tcode{strpbrk}, \tcode{strrchr}, \tcode{strstr}, and \tcode{memchr},
 have different signatures in this document,
-but they have the same behavior as in the C standard library\iref{library.c}.
+but they have the same behavior as in the \link{C standard library}{library.c}.
 \end{note}
 
 \xrefc{7.24}
@@ -5558,7 +5556,7 @@ are the same as the C standard library header
 The functions
 \tcode{wcschr}, \tcode{wcspbrk}, \tcode{wcsrchr}, \tcode{wcsstr}, and \tcode{wmemchr}
 have different signatures in this document,
-but they have the same behavior as in the C standard library\iref{library.c}.
+but they have the same behavior as in the \link{C standard library}{library.c}.
 \end{note}
 
 \xrefc{7.29}

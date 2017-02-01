@@ -961,7 +961,7 @@ namespace std {
 \end{codeblock}
 
 \pnum
-The type \tcode{mask} is a bitmask type\iref{bitmask.types}.
+The type \tcode{mask} is a \link{bitmask type}{bitmask.types}.
 
 \rSec3[locale.ctype]{Class template \tcode{ctype}}
 
@@ -1232,7 +1232,7 @@ accept values derived from \grammarterm{character-literal}s
 for conversion to the locale's encoding.
 \end{footnote}
 The only characters for which unique transformations are required
-are those in the basic source character set\iref{lex.charset}.
+are those in the \deflinkx{basic source character set}{character set!basic source}{lex.charset}.
 
 For any named \tcode{ctype} category with
 a \tcode{ctype<charT>} facet \tcode{ctc} and
@@ -1267,7 +1267,8 @@ Applies the simplest reasonable transformation
 from a \tcode{charT} value or sequence of \tcode{charT} values
 to the corresponding \tcode{char} value or values.
 
-For any character \tcode{c} in the basic source character set\iref{lex.charset}
+For any character \tcode{c} in the
+\deflinkx{basic source character set}{character set!basic source}{lex.charset}
 the transformation is such that
 \begin{codeblock}
 do_widen(do_narrow(c, 0)) == c
@@ -4500,31 +4501,21 @@ namespace std {
 
 \rSec2[clocale.syn]{Header \tcode{<clocale>} synopsis}
 
-\indexlibraryglobal{lconv}%
-\indexlibraryglobal{setlocale}%
-\indexlibraryglobal{localeconv}%
-\indexlibraryglobal{NULL}%
-\indexlibraryglobal{LC_ALL}%
-\indexlibraryglobal{LC_COLLATE}%
-\indexlibraryglobal{LC_CTYPE}%
-\indexlibraryglobal{LC_MONETARY}%
-\indexlibraryglobal{LC_NUMERIC}%
-\indexlibraryglobal{LC_TIME}%
 \begin{codeblock}
 namespace std {
-  struct lconv;
+  struct @\libglobal{lconv}@;
 
-  char* setlocale(int category, const char* locale);
-  lconv* localeconv();
+  char* @\libglobal{setlocale}@(int category, const char* locale);
+  lconv* @\libglobal{localeconv}@();
 }
 
-#define NULL @\textit{see \ref{support.types.nullptr}}@
-#define LC_ALL @\seebelow@
-#define LC_COLLATE @\seebelow@
-#define LC_CTYPE @\seebelow@
-#define LC_MONETARY @\seebelow@
-#define LC_NUMERIC @\seebelow@
-#define LC_TIME @\seebelow@
+#define @\libglobal{NULL}@ @\textit{see \ref{support.types.nullptr}}@
+#define @\libglobal{LC_ALL}@ @\seebelow@
+#define @\libglobal{LC_COLLATE}@ @\seebelow@
+#define @\libglobal{LC_CTYPE}@ @\seebelow@
+#define @\libglobal{LC_MONETARY}@ @\seebelow@
+#define @\libglobal{LC_NUMERIC}@ @\seebelow@
+#define @\libglobal{LC_TIME}@ @\seebelow@
 \end{codeblock}
 
 \pnum
