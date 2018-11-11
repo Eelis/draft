@@ -369,7 +369,7 @@ given character:
 \item
 \indextext{literal!string!raw}%
 If the next character begins a sequence of characters that could be the prefix
-and initial double quote of a raw string literal, such as \tcode{R"}, the next preprocessing
+and initial double quote of a raw string literal, such as \literaltcode{R"}, the next preprocessing
 token shall be a raw string literal. Between the initial and final
 double quote characters of the raw string, any transformations performed in phases
 1 and 2 (\grammarterm{universal-character-name}{s} and line splicing) are reverted; this reversion
@@ -377,7 +377,7 @@ shall apply before any \grammarterm{d-char}, \grammarterm{r-char}, or delimiting
 parenthesis is identified. The raw string literal is defined as the shortest sequence
 of characters that matches the raw-string pattern
 \begin{ncbnf}
-\opt{encoding-prefix} \terminal{R} raw-string
+\opt{encoding-prefix} \literalterminal{R} raw-string
 \end{ncbnf}
 
 \item Otherwise, if the next three characters are \tcode{<::} and the subsequent character
@@ -607,15 +607,15 @@ depending on the implementation.
 \begin{bnf}
 \nontermdef{pp-number}\br
     digit\br
-    \terminal{.} digit\br
+    \literalterminal{.} digit\br
     pp-number identifier-continue\br
-    pp-number \terminal{'} digit\br
-    pp-number \terminal{'} nondigit\br
-    pp-number \terminal{e} sign\br
-    pp-number \terminal{E} sign\br
-    pp-number \terminal{p} sign\br
-    pp-number \terminal{P} sign\br
-    pp-number \terminal{.}
+    pp-number \literalterminal{'} digit\br
+    pp-number \literalterminal{'} nondigit\br
+    pp-number \literalterminal{e} sign\br
+    pp-number \literalterminal{E} sign\br
+    pp-number \literalterminal{p} sign\br
+    pp-number \literalterminal{P} sign\br
+    pp-number \literalterminal{.}
 \end{bnf}
 
 \pnum
@@ -947,19 +947,19 @@ ISO C.
 \nontermdef{binary-literal}\br
     \terminal{0b} binary-digit\br
     \terminal{0B} binary-digit\br
-    binary-literal \opt{\terminal{'}} binary-digit
+    binary-literal \opt{\literalterminal{'}} binary-digit
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{octal-literal}\br
     \terminal{0}\br
-    octal-literal \opt{\terminal{'}} octal-digit
+    octal-literal \opt{\literalterminal{'}} octal-digit
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{decimal-literal}\br
     nonzero-digit\br
-    decimal-literal \opt{\terminal{'}} digit
+    decimal-literal \opt{\literalterminal{'}} digit
 \end{bnf}
 
 \begin{bnf}
@@ -990,14 +990,14 @@ ISO C.
 \begin{bnf}
 \nontermdef{hexadecimal-digit-sequence}\br
     hexadecimal-digit\br
-    hexadecimal-digit-sequence \opt{\terminal{'}} hexadecimal-digit
+    hexadecimal-digit-sequence \opt{\literalterminal{'}} hexadecimal-digit
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{hexadecimal-digit} \textnormal{one of}\br
-    \terminal{0  1  2  3  4  5  6  7  8  9}\br
-    \terminal{a  b  c  d  e  f}\br
-    \terminal{A  B  C  D  E  F}
+    \literalterminal{0  1  2  3  4  5  6  7  8  9}\br
+    \literalterminal{a  b  c  d  e  f}\br
+    \literalterminal{A  B  C  D  E  F}
 \end{bnf}
 
 \begin{bnf}
@@ -1012,17 +1012,17 @@ ISO C.
 
 \begin{bnf}
 \nontermdef{unsigned-suffix} \textnormal{one of}\br
-    \terminal{u  U}
+    \literalterminal{u  U}
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{long-suffix} \textnormal{one of}\br
-    \terminal{l  L}
+    \literalterminal{l  L}
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{long-long-suffix} \textnormal{one of}\br
-    \terminal{ll  LL}
+    \literalterminal{ll  LL}
 \end{bnf}
 
 \begin{bnf}
@@ -1061,7 +1061,7 @@ when determining the value.
 
 \pnum
 The \grammarterm{hexadecimal-digit}s
-\tcode{a} through \tcode{f} and \tcode{A} through \tcode{F}
+\literaltcode{a} through \literaltcode{f} and \literaltcode{A} through \literaltcode{F}
 have decimal values ten through fifteen.
 \begin{example}
 The number twelve can be written \tcode{12}, \tcode{014},
@@ -1106,7 +1106,7 @@ none    &
         &
         &
   \tcode{unsigned long long int}\\\hline
-\tcode{u} or \tcode{U}  &
+\literaltcode{u} or \literaltcode{U}  &
   \tcode{unsigned int}  &
   \tcode{unsigned int}\\
                               &
@@ -1115,7 +1115,7 @@ none    &
                               &
   \tcode{unsigned long long int}   &
   \tcode{unsigned long long int}\\\hline
-\tcode{l} or \tcode{L}  &
+\literaltcode{l} or \literaltcode{L}  &
   \tcode{long int}  &
   \tcode{long int}\\
                               &
@@ -1127,22 +1127,22 @@ none    &
                               &
                               &
   \tcode{unsigned long long int}\\\hline
-Both \tcode{u} or \tcode{U}   &
+Both \literaltcode{u} or \literaltcode{U}   &
   \tcode{unsigned long int}  &
   \tcode{unsigned long int}\\
-and \tcode{l} or \tcode{L}  &
+and \literaltcode{l} or \literaltcode{L}  &
   \tcode{unsigned long long int}  &
   \tcode{unsigned long long int}\\\hline
-\tcode{ll} or \tcode{LL}  &
+\literaltcode{ll} or \literaltcode{LL}  &
   \tcode{long long int}       &
   \tcode{long long int}\\
                               &
                               &
   \tcode{unsigned long long int}\\\hline
-Both \tcode{u} or \tcode{U}   &
+Both \literaltcode{u} or \literaltcode{U}   &
   \tcode{unsigned long long int}  &
   \tcode{unsigned long long int}\\
-and \tcode{ll} or \tcode{LL}  &
+and \literaltcode{ll} or \literaltcode{LL}  &
                               &
                               \\\hline
 \tcode{z} or \tcode{Z}                  &
@@ -1184,12 +1184,12 @@ that cannot be represented by any of the allowed types.
 \indextext{literal!character}%
 \begin{bnf}
 \nontermdef{character-literal}\br
-    \opt{encoding-prefix} \terminal{'} c-char-sequence \terminal{'}
+    \opt{encoding-prefix} \literalterminal{'} c-char-sequence \literalterminal{'}
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{encoding-prefix} \textnormal{one of}\br
-    \terminal{u8}\quad\terminal{u}\quad\terminal{U}\quad\terminal{L}
+    \literalterminal{u8}\quad\literalterminal{u}\quad\literalterminal{U}\quad\literalterminal{L}
 \end{bnf}
 
 \begin{bnf}
@@ -1235,14 +1235,14 @@ that cannot be represented by any of the allowed types.
 
 \begin{bnf}
 \nontermdef{octal-escape-sequence}\br
-    \terminal{\textbackslash} octal-digit\br
-    \terminal{\textbackslash} octal-digit octal-digit\br
-    \terminal{\textbackslash} octal-digit octal-digit octal-digit
+    \literalterminal{\textbackslash} octal-digit\br
+    \literalterminal{\textbackslash} octal-digit octal-digit\br
+    \literalterminal{\textbackslash} octal-digit octal-digit octal-digit
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{hexadecimal-escape-sequence}\br
-    \terminal{\textbackslash x} hexadecimal-digit\br
+    \literalterminal{\textbackslash x} hexadecimal-digit\br
     hexadecimal-escape-sequence hexadecimal-digit
 \end{bnf}
 
@@ -1460,42 +1460,42 @@ double quote    &   \tcode{"}       &   \tcode{\textbackslash "}                
 
 \begin{bnf}
 \nontermdef{fractional-constant}\br
-    \opt{digit-sequence} \terminal{.} digit-sequence\br
-    digit-sequence \terminal{.}
+    \opt{digit-sequence} \literalterminal{.} digit-sequence\br
+    digit-sequence \literalterminal{.}
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{hexadecimal-fractional-constant}\br
-    \opt{hexadecimal-digit-sequence} \terminal{.} hexadecimal-digit-sequence\br
-    hexadecimal-digit-sequence \terminal{.}
+    \opt{hexadecimal-digit-sequence} \literalterminal{.} hexadecimal-digit-sequence\br
+    hexadecimal-digit-sequence \literalterminal{.}
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{exponent-part}\br
-    \terminal{e} \opt{sign} digit-sequence\br
-    \terminal{E} \opt{sign} digit-sequence
+    \literalterminal{e} \opt{sign} digit-sequence\br
+    \literalterminal{E} \opt{sign} digit-sequence
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{binary-exponent-part}\br
-    \terminal{p} \opt{sign} digit-sequence\br
-    \terminal{P} \opt{sign} digit-sequence
+    \literalterminal{p} \opt{sign} digit-sequence\br
+    \literalterminal{P} \opt{sign} digit-sequence
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{sign} \textnormal{one of}\br
-    \terminal{+  -}
+    \literalterminal{+  -}
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{digit-sequence}\br
     digit\br
-    digit-sequence \opt{\terminal{'}} digit
+    digit-sequence \opt{\literalterminal{'}} digit
 \end{bnf}
 
 \begin{bnf}
 \nontermdef{floating-point-suffix} \textnormal{one of}\br
-    \terminal{f  l  F  L}
+    \literalterminal{f  l  F  L}
 \end{bnf}
 
 \pnum
@@ -1515,8 +1515,8 @@ its \grammarterm{floating-point-suffix} as specified in \tref{lex.fcon.type}.
 \topline
 \lhdr{\grammarterm{floating-point-suffix}} & \rhdr{type} \\ \capsep
 none & \keyword{double} \\
-\tcode{f} or \tcode{F} & \keyword {float} \\
-\tcode{l} or \tcode{L} & \keyword{long} \keyword{double} \\
+\literaltcode{f} or \literaltcode{F} & \keyword {float} \\
+\literaltcode{l} or \literaltcode{L} & \keyword{long} \keyword{double} \\
 \end{simpletypetable}
 
 \pnum
@@ -1567,8 +1567,8 @@ chosen in an \impldef{choice of larger or smaller value of
 \indextext{literal!string}%
 \begin{bnf}
 \nontermdef{string-literal}\br
-    \opt{encoding-prefix} \terminal{"} \opt{s-char-sequence} \terminal{"}\br
-    \opt{encoding-prefix} \terminal{R} raw-string
+    \opt{encoding-prefix} \literalterminal{"} \opt{s-char-sequence} \literalterminal{"}\br
+    \opt{encoding-prefix} \literalterminal{R} raw-string
 \end{bnf}
 
 \begin{bnf}
@@ -1591,7 +1591,7 @@ chosen in an \impldef{choice of larger or smaller value of
 
 \begin{bnf}
 \nontermdef{raw-string}\br
-    \terminal{"} \opt{d-char-sequence} \terminal{(} \opt{r-char-sequence} \terminal{)} \opt{d-char-sequence} \terminal{"}
+    \literalterminal{"} \opt{d-char-sequence} \literalterminal{(} \opt{r-char-sequence} \literalterminal{)} \opt{d-char-sequence} \literalterminal{"}
 \end{bnf}
 
 \begin{bnf}
@@ -1677,7 +1677,7 @@ UTF-32 &
 
 \pnum
 \indextext{literal!string!raw}%
-A \grammarterm{string-literal} that has an \tcode{R}
+A \grammarterm{string-literal} that has an \literaltcode{R}
 \indextext{prefix!\idxcode{R}}%
 in the prefix is a \defn{raw string literal}. The
 \grammarterm{d-char-sequence} serves as a delimiter. The terminating
