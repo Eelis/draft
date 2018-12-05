@@ -829,7 +829,7 @@ type\iref{temp.deduct} and
 denote iterators that meet the \oldconcept{InputIterator} requirements
 and refer to elements implicitly convertible to \tcode{value_type},
 \item
-\tcode{[i, j)} denotes a valid range,
+\range{i}{j} denotes a valid range,
 \item
 \tcode{il} designates an object of type \tcode{initializer_list<value_type>},
 \item
@@ -839,7 +839,7 @@ and refer to elements implicitly convertible to \tcode{value_type},
 \item
 \tcode{q} denotes a valid dereferenceable constant iterator to \tcode{a},
 \item
-\tcode{[q1, q2)} denotes a valid range of constant iterators in \tcode{a},
+\range{q1}{q2} denotes a valid range of constant iterators in \tcode{a},
 \item
 \tcode{t} denotes an lvalue or a const rvalue of \tcode{X::value_type}, and
 \item
@@ -1698,7 +1698,7 @@ implicitly convertible to
 \item
 \tcode{r} denotes a valid dereferenceable iterator to \tcode{a},
 \item
-\tcode{[q1, q2)} denotes a valid range of constant iterators in \tcode{a},
+\range{q1}{q2} denotes a valid range of constant iterators in \tcode{a},
 \item
 \tcode{il} designates an object of type \tcode{initializer_list<value_type>},
 \item
@@ -1815,9 +1815,9 @@ and \tcode{nh} denotes a non-const rvalue of type \tcode{X::node_type}.
                         &
   \expects \tcode{value_type} is \oldconcept{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
   \effects\ Constructs an empty container and inserts elements from the
-  range \tcode{[i, j)} into it; uses \tcode{c} as a comparison object. &
+  range \range{i}{j} into it; uses \tcode{c} as a comparison object. &
   $N \log N$ in general, where $N$ has the value \tcode{distance(i, j)};
-  linear if \tcode{[i, j)} is sorted with \tcode{value_comp()} \\ \rowsep
+  linear if \range{i}{j} is sorted with \tcode{value_comp()} \\ \rowsep
 
 \tcode{X(i,j)}\br\tcode{X~u(i,j);}    &
                                     &
@@ -2398,7 +2398,7 @@ In \tref{container.hash.req},
 \tcode{i} and \tcode{j} denote input iterators
   that refer to \tcode{value_type},
 \item
-\tcode{[i, j)} denotes a valid range,
+\range{i}{j} denotes a valid range,
 \item
 \tcode{p} and \tcode{q2} denote valid constant iterators to \tcode{a},
 \item
@@ -2570,7 +2570,7 @@ as the key equality predicate.
 &   \expects \tcode{value_type} is \oldconcept{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
     \effects\ Constructs an empty container with at least \tcode{n} buckets,
 using \tcode{hf} as the hash function and \tcode{eq} as the key
-equality predicate, and inserts elements from \tcode{[i, j)} into it.
+equality predicate, and inserts elements from \range{i}{j} into it.
 &   Average case \bigoh{N} ($N$ is \tcode{distance(i, j)}), worst case
 \bigoh{N^2}
 \\ \rowsep
@@ -2581,7 +2581,7 @@ equality predicate, and inserts elements from \tcode{[i, j)} into it.
     \tcode{value_type} is \oldconcept{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
     \effects\ Constructs an empty container with at least \tcode{n} buckets,
 using \tcode{hf} as the hash function and \tcode{key_equal()} as the key
-equality predicate, and inserts elements from \tcode{[i, j)} into it.
+equality predicate, and inserts elements from \range{i}{j} into it.
 &   Average case \bigoh{N} ($N$ is \tcode{distance(i, j)}), worst case
 \bigoh{N^2}
 \\ \rowsep
@@ -2592,7 +2592,7 @@ equality predicate, and inserts elements from \tcode{[i, j)} into it.
     \tcode{value_type} is \oldconcept{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
     \effects\ Constructs an empty container with at least \tcode{n} buckets,
 using \tcode{hasher()} as the hash function and \tcode{key_equal()}
-as the key equality predicate, and inserts elements from \tcode{[i, j)}
+as the key equality predicate, and inserts elements from \range{i}{j}
 into it.
 &   Average case \bigoh{N} ($N$ is \tcode{distance(i, j)}), worst case
 \bigoh{N^2}
@@ -2605,7 +2605,7 @@ into it.
     \effects\ Constructs an empty container with an unspecified number of
 buckets, using \tcode{hasher()} as the hash function and
 \tcode{key_equal()} as the key equality predicate, and inserts elements
-from \tcode{[i, j)} into it.
+from \range{i}{j} into it.
 &   Average case \bigoh{N} ($N$ is \tcode{distance(i, j)}), worst case
 \bigoh{N^2}
 \\ \rowsep
@@ -4844,8 +4844,8 @@ the comparator \tcode{operator<} (for the first two overloads) or
 
 \pnum
 \effects
-Merges the two sorted ranges \tcode{[begin(), end())} and
-\tcode{[x.begin(), x.end())}. \tcode{x} is empty after the merge. If an
+Merges the two sorted ranges \range{begin()}{end()} and
+\range{x.begin()}{x.end()}. \tcode{x} is empty after the merge. If an
 exception is thrown other than by a comparison there are no effects.
 Pointers and references to the moved elements of \tcode{x} now refer to those same elements
 but as members of \tcode{*this}. Iterators referring to the moved elements will continue to
@@ -5545,8 +5545,8 @@ the comparator \tcode{operator<} (for the first two overloads) or
 
 \pnum
 \effects
-If \tcode{addressof(x) == this}, does nothing; otherwise, merges the two sorted ranges \tcode{[begin(),
-end())} and \tcode{[x.\brk{}begin(), x.end())}. The result is a range in which the elements
+If \tcode{addressof(x) == this}, does nothing; otherwise, merges the two sorted ranges \range{begin()}{end()}
+and \range{x.\brk{}begin()}{x.end()}. The result is a range in which the elements
 will be sorted in non-decreasing order according to the ordering defined by \tcode{comp}; that
 is, for every iterator \tcode{i}, in the range other than the first, the condition
 \tcode{comp(*i, *(i - 1))} will be \tcode{false}.
@@ -5566,7 +5566,7 @@ If an exception is thrown other than by a comparison there are no effects.
 
 \pnum
 \remarks
-Stable\iref{algorithm.stable}. If \tcode{addressof(x) != this}, the range \tcode{[x.begin(), x.end())}
+Stable\iref{algorithm.stable}. If \tcode{addressof(x) != this}, the range \range{x.begin()}{x.end()}
 is empty after the merge.
 No elements are copied by this operation.
 \end{itemdescr}
