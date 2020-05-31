@@ -863,7 +863,6 @@ may be defined as \keyword{void}.
 \pnum
 The definitions in this subclause make use of the following
 exposition-only concepts:
-
 \begin{codeblock}
 template<class I>
 concept @\defexposconcept{cpp17-iterator}@ =
@@ -921,7 +920,6 @@ concept @\defexposconcept{cpp17-random-access-iterator}@ =
 \pnum
 The members of a specialization \tcode{iterator_traits<I>} generated from the
 \tcode{iterator_traits} primary template are computed as follows:
-
 \begin{itemize}
 \item
 If \tcode{I} has valid\iref{temp.deduct} member
@@ -1070,7 +1068,6 @@ The name \tcode{ranges::iter_move} denotes
 a customization point object\iref{customization.point.object}.
 The expression \tcode{ranges::\-iter_move(E)} for a subexpression \tcode{E} is
 expression-equivalent to:
-
 \begin{itemize}
 \item \tcode{iter_move(E)}, if
 \tcode{E} has class or enumeration type and
@@ -2661,7 +2658,6 @@ namespace std {
 A program-defined iterator \tcode{BinaryTreeIterator}
 can be included into the bidirectional iterator category by
 specializing the \tcode{iterator_traits} template:
-
 \begin{codeblock}
 template<class T> struct iterator_traits<BinaryTreeIterator<T>> {
   using iterator_category = bidirectional_iterator_tag;
@@ -2679,7 +2675,6 @@ If
 \tcode{evolve()}
 is well-defined for bidirectional iterators, but can be implemented more
 efficiently for random access iterators, then the implementation is as follows:
-
 \begin{codeblock}
 template<class BidirectionalIterator>
 inline void
@@ -3283,7 +3278,6 @@ As if by:
 Iterator tmp = current;
 return *--tmp;
 \end{codeblock}
-
 \end{itemdescr}
 
 \indexlibrarymember{operator->}{reverse_iterator}%
@@ -4078,7 +4072,6 @@ vector<string> v1(s.begin(), s.end());          // copies strings into \tcode{v1
 vector<string> v2(make_move_iterator(s.begin()),
                   make_move_iterator(s.end())); // moves strings into \tcode{v2}
 \end{codeblock}
-
 \end{example}
 
 \rSec3[move.iterator]{Class template \tcode{move_iterator}}
@@ -4593,7 +4586,6 @@ ranges together with \tcode{move_iterator}. When an input iterator type
 \begin{example}
 A \tcode{move_if} algorithm is easily implemented with
 \tcode{copy_if} using \tcode{move_iterator} and \tcode{move_sentinel}:
-
 \begin{codeblock}
 template<@\libconcept{input_iterator}@ I, @\libconcept{sentinel_for}@<I> S, @\libconcept{weakly_incrementable}@ O,
          @\libconcept{indirect_unary_predicate}@<I> Pred>
@@ -5769,7 +5761,6 @@ partial_sum(istream_iterator<double, char>(cin),
   istream_iterator<double, char>(),
   ostream_iterator<double, char>(cout, "@\textbackslash@n"));
 \end{codeblock}
-
 reads a file containing floating-point numbers from
 \tcode{cin},
 and prints the partial sums onto

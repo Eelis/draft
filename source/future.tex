@@ -418,7 +418,6 @@ specifies throwing an exception when the precondition is violated.
 
 \pnum
 The header \libheaderref{utility} has the following additions:
-
 \begin{codeblock}
 namespace std::rel_ops {
   template<class T> bool operator!=(const T&, const T&);
@@ -432,7 +431,6 @@ namespace std::rel_ops {
 To avoid redundant definitions of \tcode{operator!=} out of \tcode{operator==}
 and operators \tcode{>}, \tcode{<=}, and \tcode{>=} out of \tcode{operator<},
 the library provides the following:
-
 \indexlibrary{\idxcode{operator"!=}}%
 \begin{itemdecl}
 template<class T> bool operator!=(const T& x, const T& y);
@@ -725,14 +723,12 @@ The macro \tcode{INT_MAX} is defined in \libheaderref{climits}.
 
 \pnum
 If \tcode{pbeg_arg} is a null pointer, the function executes:
-
 \begin{codeblock}
 setg(gnext_arg, gnext_arg, gnext_arg + N);
 \end{codeblock}
 
 \pnum
 Otherwise, the function executes:
-
 \begin{codeblock}
 setg(gnext_arg, gnext_arg, pbeg_arg);
 setp(pbeg_arg,  pbeg_arg + N);
@@ -1166,7 +1162,6 @@ It supplies a
 \tcode{strstreambuf}
 object to control the associated array object.
 For the sake of exposition, the maintained data is presented here as:
-
 \begin{itemize}
 \item
 \tcode{sb}, the \tcode{strstreambuf} object.
@@ -1260,7 +1255,6 @@ It supplies a
 \tcode{strstreambuf}
 object to control the associated array object.
 For the sake of exposition, the maintained data is presented here as:
-
 \begin{itemize}
 \item
 \tcode{sb}, the \tcode{strstreambuf} object.
@@ -1290,7 +1284,6 @@ ostrstream(char* s, int n, ios_base::openmode mode = ios_base::out);
 \effects
 Initializes the base class with \tcode{ostream(\&sb)},
 and \tcode{sb} with one of two constructors:
-
 \begin{itemize}
 \item
 If
@@ -1406,7 +1399,6 @@ It supplies a
 \tcode{strstreambuf}
 object to control the associated array object.
 For the sake of exposition, the maintained data is presented here as:
-
 \begin{itemize}
 \item
 \tcode{sb}, the \tcode{strstreambuf} object.
@@ -1565,7 +1557,6 @@ As if by \tcode{p->\~T()}.
 \pnum
 The header \libheaderrefx{type_traits}{meta.type.synop}
 has the following addition:
-
 \indexlibraryglobal{is_literal_type}%
 \begin{codeblock}
 namespace std {
@@ -1609,7 +1600,6 @@ It is unspecified whether a closure type\iref{expr.prim.lambda.closure} is a POD
 
 \pnum
 The header \libheaderref{tuple} has the following additions:
-
 \begin{codeblock}
 namespace std {
   template<class T> class tuple_size<volatile T>;
@@ -1679,7 +1669,6 @@ are included.
 
 \pnum
 The header \libheaderref{variant} has the following additions:
-
 \begin{codeblock}
 namespace std {
   template<class T> struct variant_size<volatile T>;
@@ -1726,7 +1715,6 @@ with a member typedef \tcode{type} that names the following type:
 
 \pnum
 The header \libheaderrefx{iterator}{iterator.synopsis} has the following addition:
-
 \indexlibraryglobal{iterator}%
 \begin{codeblock}
 namespace std {
@@ -1760,7 +1748,6 @@ only to callers of that class.
 If a \Cpp{} program wants to define a bidirectional iterator for some data
 structure containing \tcode{double} and such that it works on a large memory
 model of the implementation, it can do so with:
-
 \begin{codeblock}
 class MyIterator :
   public iterator<bidirectional_iterator_tag, double, long, T*, T&> {
@@ -1774,7 +1761,6 @@ class MyIterator :
 \pnum
 The following member is declared in addition to those members
 specified in \ref{move.iter.elem}:
-
 \begin{codeblock}
 namespace std {
   template<class Iterator>
@@ -1800,7 +1786,6 @@ constexpr pointer operator->() const;
 
 \pnum
 The header \libheaderref{memory} has the following additions:
-
 \indexlibraryglobal{shared_ptr}%
 \begin{codeblock}
 namespace std {
@@ -2064,7 +2049,6 @@ The weak form may fail spuriously. See~\ref{atomics.types.operations}.
 \pnum
 The following member is declared in addition to those members specified
 in \ref{string.capacity}:
-
 \indexlibraryglobal{basic_string}%
 \begin{codeblock}
 namespace std {
@@ -2216,7 +2200,6 @@ Cancelled and replaced by ISO/IEC 10646:2017.
 
 \pnum
 The header \libheaderref{locale} has the following additions:
-
 \begin{codeblock}
 namespace std {
   template<class Codecvt, class Elem = wchar_t,
@@ -2310,7 +2293,6 @@ char, mbstate_t>}.
 
 \pnum
 An object of this class template stores:
-
 \begin{itemize}
 \item \tcode{byte_err_string} --- a byte string to display on errors
 \item \tcode{wide_err_string} --- a wide string to display on errors
@@ -2361,7 +2343,6 @@ wide string.
 
 \pnum
 In all cases:
-
 \begin{itemize}
 \item If the \tcode{cvtstate} object was not constructed with an explicit value, it
 shall be set to its default value (the initial conversion state) before the
@@ -2428,7 +2409,6 @@ range \range{first}{last} to a byte string.
 
 \pnum
 In all cases:
-
 \begin{itemize}
 \item If the \tcode{cvtstate} object was not constructed with an explicit value, it
 shall be
@@ -2548,7 +2528,6 @@ of the standard code-conversion facet \tcode{codecvt<Elem, char, mbstate_t>}.
 
 \pnum
 An object of this class template stores:
-
 \begin{itemize}
 \item \tcode{bufptr} --- a pointer to its underlying byte stream buffer
 \item \tcode{cvtptr} --- a pointer to the allocated conversion object
@@ -2742,7 +2721,6 @@ as it is consistent with \tcode{path}'s handling of other encodings.
 
 \pnum
 The header \libheaderrefx{atomic}{atomics.syn} has the following additions.
-
 \begin{codeblock}
 namespace std {
   template<class T>

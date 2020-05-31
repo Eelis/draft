@@ -663,7 +663,6 @@ template<class T> constexpr complex<T> operator+(const complex<T>& lhs);
 \pnum
 \returns
 \tcode{complex<T>(lhs)}.
-
 \end{itemdescr}
 
 \begin{itemdecl}
@@ -802,7 +801,6 @@ template<class T, class charT, class traits>
 \effects
 Inserts the complex number \tcode{x}
 onto the stream \tcode{o} as if it were implemented as follows:
-
 \begin{codeblock}
 basic_ostringstream<charT, traits> s;
 s.flags(o.flags());
@@ -1387,7 +1385,6 @@ template<class T>
 \returns
 \tcode{true} if \tcode{x} is an integral power of two;
 \tcode{false} otherwise.
-
 \end{itemdescr}
 
 \indexlibraryglobal{bit_ceil}%
@@ -1439,7 +1436,6 @@ template<class T>
 If \tcode{x == 0}, \tcode{0};
 otherwise the maximal value \tcode{y}
 such that \tcode{has_single_bit(y)} is \tcode{true} and \tcode{y <= x}.
-
 \end{itemdescr}
 
 \indexlibraryglobal{bit_width}%
@@ -1458,7 +1454,6 @@ template<class T>
 If \tcode{x == 0}, \tcode{0};
 otherwise one plus the base-2 logarithm of \tcode{x},
 with any fractional part discarded.
-
 \end{itemdescr}
 
 \rSec2[bit.rotate]{Rotating}
@@ -4281,7 +4276,6 @@ template<class RandomAccessIterator>
  each operation is to be carried out modulo $2^{32}$,
  each indexing operator applied to \tcode{begin} is to be taken modulo $n$,
  and $T(x)$ is defined as $x \xor (x \rightshift 27)$:
-
 \begin{itemize}
  \item
    By way of initialization,
@@ -8272,7 +8266,6 @@ A unique function with the indicated name can be applied (unqualified)
 to an operand of type \tcode{T}.
 This function returns a value of type \tcode{T}
 or which can be unambiguously implicitly converted to type \tcode{T}.
-
 \end{itemdescr}
 
 \rSec3[valarray.special]{Specialized algorithms}
@@ -8287,7 +8280,6 @@ template<class T> void swap(valarray<T>& x, valarray<T>& y) noexcept;
 \effects
 Equivalent to \tcode{x.swap(y)}.
 \end{itemdescr}
-
 
 \rSec2[class.slice]{Class \tcode{slice}}
 
@@ -8709,7 +8701,6 @@ namespace std {
 This template is a helper template used by the
 \tcode{gslice}
 subscript operator
-
 \indexlibraryglobal{gslice_array}%
 \indexlibraryglobal{valarray}%
 \begin{itemdecl}
@@ -8835,7 +8826,6 @@ namespace std {
 
 \pnum
 This template is a helper template used by the mask subscript operator:
-
 \indexlibrarymember{operator[]}{mask_array}%
 \begin{itemdecl}
 mask_array<T> valarray<T>::operator[](const valarray<bool>&).
@@ -8952,7 +8942,6 @@ namespace std {
 
 \pnum
 This template is a helper template used by the indirect subscript operator
-
 \indexlibrarymember{operator[]}{indirect_array}%
 \begin{itemdecl}
 indirect_array<T> valarray<T>::operator[](const valarray<size_t>&).
@@ -10569,7 +10558,6 @@ of their respective arguments
 \]
 where
 $x$ is \tcode{x}.
-
 \end{itemdescr}
 
 \rSec3[sf.cmath.hermite]{Hermite polynomials}%

@@ -645,7 +645,6 @@ exposition only; and
 
 \item
 \exposid{begin-expr} and \exposid{end-expr} are determined as follows:
-
 \begin{itemize}
 \item if the \grammarterm{for-range-initializer} is an expression of
 array type \tcode{R}, \exposid{begin-expr} and \exposid{end-expr} are
@@ -757,8 +756,7 @@ statement shall occur only in an
 \grammarterm{iteration-statement}
 and causes control to pass to the loop-continuation portion of the
 smallest enclosing \grammarterm{iteration-statement}, that is, to the end
-of the loop. More precisely, in each of the statements
-
+of the loop. More precisely, in each of the statements\newline
 \begin{minipage}{.30\hsize}
 \begin{codeblock}
 while (foo) {
@@ -789,7 +787,6 @@ for (;;) {
 }
 \end{codeblock}
 \end{minipage}
-
 a \keyword{continue} not contained in an enclosed iteration statement is
 equivalent to \tcode{goto} \exposid{contin}.
 

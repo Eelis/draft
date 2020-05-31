@@ -232,7 +232,6 @@ Exchanges values stored in two locations.
 This function
 is a designated customization point\iref{namespace.std}.
 The exception specification is equivalent to:
-
 \begin{codeblock}
 is_nothrow_move_constructible_v<T> && is_nothrow_move_assignable_v<T>
 \end{codeblock}
@@ -1740,7 +1739,6 @@ For all $i$, assigns \tcode{std::forward<$\tcode{T}_i$>(get<$i$>(u))} to
 \remarks
 The exception specification is equivalent to the logical \logop{AND} of the
 following expressions:
-
 \begin{codeblock}
 is_nothrow_move_assignable_v<@$\mathtt{T}_i$@>
 \end{codeblock}
@@ -1870,7 +1868,6 @@ Nothing unless one of the element-wise \tcode{swap} calls throws an exception.
 \remarks
 The exception specification is equivalent to the logical
 \logop{AND} of the following expressions:
-
 \begin{codeblock}
 is_nothrow_swappable_v<@$\mathtt{T}_i$@>
 \end{codeblock}
@@ -2363,7 +2360,6 @@ As if by \tcode{x.swap(y)}.
 \pnum
 \remarks
 The exception specification is equivalent to:
-
 \begin{codeblock}
 noexcept(x.swap(y))
 \end{codeblock}
@@ -6284,7 +6280,6 @@ bitset& operator<<=(size_t pos) noexcept;
 Replaces each bit at position \tcode{I} in
 \tcode{*this}
 with a value determined as follows:
-
 \begin{itemize}
 \item
 If \tcode{I < pos}, the new value is zero;
@@ -6309,7 +6304,6 @@ bitset& operator>>=(size_t pos) noexcept;
 Replaces each bit at position \tcode{I} in
 \tcode{*this}
 with a value determined as follows:
-
 \begin{itemize}
 \item
 If \tcode{pos >= N - I}, the new value is zero;
@@ -8971,7 +8965,6 @@ add_lvalue_reference_t<T> operator*() const;
 \pnum
 \returns
 \tcode{*get()}.
-
 \end{itemdescr}
 
 \indexlibrarymember{operator->}{unique_ptr}%
@@ -9340,7 +9333,6 @@ template<class T, class... Args> unique_ptr<T> make_unique(Args&&... args);
 \pnum
 \returns
 \tcode{unique_ptr<T>(new T(std::forward<Args>(args)...))}.
-
 \end{itemdescr}
 
 \indexlibraryglobal{make_unique}%
@@ -9356,7 +9348,6 @@ template<class T> unique_ptr<T> make_unique(size_t n);
 \pnum
 \returns
 \tcode{unique_ptr<T>(new remove_extent_t<T>[n]())}.
-
 \end{itemdescr}
 
 \indexlibraryglobal{make_unique}%
@@ -9368,7 +9359,6 @@ template<class T, class... Args> @\unspec@ make_unique(Args&&...) = delete;
 \pnum
 \constraints
 \tcode{T} is an array of known bound.
-
 \end{itemdescr}
 
 \indexlibraryglobal{make_unique}%
@@ -9896,7 +9886,6 @@ template<class D, class A> shared_ptr(nullptr_t p, D d, A a);
 \tcode{is_move_constructible_v<D>} is \tcode{true}, and
 \tcode{d(p)} is a well-formed expression.
 For the first two overloads:
-
 \begin{itemize}
 \item
 If \tcode{T} is an array type, then either
@@ -10369,7 +10358,6 @@ An unspecified value such that
 \tcode{weak_ptr} instances are equivalent if and only if they share ownership or
 are both empty.
 \end{itemize}
-
 \end{itemdescr}
 
 \rSec3[util.smartptr.shared.create]{Creation}
@@ -13645,7 +13633,6 @@ namespace std {
 If a \Cpp{} program wants to have a by-element addition of two vectors \tcode{a}
 and \tcode{b} containing \tcode{double} and put the result into \tcode{a},
 it can do:
-
 \begin{codeblock}
 transform(a.begin(), a.end(), b.begin(), a.begin(), plus<double>());
 \end{codeblock}
@@ -13654,11 +13641,9 @@ transform(a.begin(), a.end(), b.begin(), a.begin(), plus<double>());
 \pnum
 \begin{example}
 To negate every element of \tcode{a}:
-
 \begin{codeblock}
 transform(a.begin(), a.end(), a.begin(), negate<double>());
 \end{codeblock}
-
 \end{example}
 
 \rSec2[func.def]{Definitions}
@@ -17496,7 +17481,6 @@ static_assert(is_final_v<U2>);
 The predicate condition for a template specialization
 \tcode{is_constructible<T, Args...>} shall be satisfied if and only if the
 following variable definition would be well-formed for some invented variable \tcode{t}:
-
 \begin{codeblock}
 T t(declval<Args>()...);
 \end{codeblock}
@@ -17758,7 +17742,6 @@ is_base_of_v<int, int>          // \tcode{false}
 The predicate condition for a template specialization \tcode{is_convertible<From, To>}
 shall be satisfied if and only if the return expression in the following code would be
 well-formed, including any implicit conversions to the return type of the function:
-
 \begin{codeblock}
 To test() {
   return declval<From>();
@@ -18265,7 +18248,6 @@ If any of the types computed above is ill-formed, then
 Note A:
 For the \tcode{common_type} trait applied to a template parameter pack \tcode{T} of types,
 the member \tcode{type} shall be either defined or not present as follows:
-
 \begin{itemize}
 \item If \tcode{sizeof...(T)} is zero, there shall be no member \tcode{type}.
 
@@ -18759,7 +18741,6 @@ This excludes the most negative value.
 The static data members \tcode{num} and \tcode{den} shall have the following values,
 where \tcode{gcd} represents the greatest common divisor of the absolute values of
 \tcode{N} and \tcode{D}:
-
 \begin{itemize}
 \item \tcode{num} shall have the value \tcode{sign(N) * sign(D) * abs(N) / gcd}.
 \item \tcode{den} shall have the value \tcode{abs(D) / gcd}.
@@ -18830,7 +18811,6 @@ static_assert(ratio_multiply<ratio<1, INT_MAX>, ratio<INT_MAX, 2>>::num == 1,
 static_assert(ratio_multiply<ratio<1, INT_MAX>, ratio<INT_MAX, 2>>::den == 2,
   "1/MAX * MAX/2 == 1/2");
 \end{codeblock}
-
 \end{example}
 
 \rSec2[ratio.comparison]{Comparison of \tcode{ratio}{s}}
@@ -19769,7 +19749,6 @@ is copied unchanged to the output.
 An escape sequence is one of \noncxxtcode{\{\{} or \noncxxtcode{\}\}}.
 It is replaced with \noncxxtcode{\{} or \noncxxtcode{\}}, respectively, in the output.
 The syntax of replacement fields is as follows:
-
 \begin{ncbnf}
 \fmtnontermdef{replacement-field}\br
     \noncxxterminal{\{} \opt{arg-id} \opt{format-specifier} \noncxxterminal{\}}
@@ -19899,7 +19878,6 @@ Some of the formatting options
 are only supported for arithmetic types.
 \end{note}
 The syntax of format specifications is as follows:
-
 \begin{ncbnf}
 \fmtnontermdef{std-format-spec}\br
     \opt{fill-and-align} \opt{sign} \opt{\noncxxterminal{\#}} \opt{\noncxxterminal{0}} \opt{width} \opt{precision} \opt{\noncxxterminal{L}} \opt{type}

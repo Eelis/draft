@@ -399,7 +399,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{E} is an rvalue and
@@ -465,7 +464,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{E} is an rvalue and
@@ -578,7 +576,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{E} is an rvalue and
@@ -647,7 +644,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{E} is an rvalue and
@@ -760,7 +756,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{T} is an array of unknown bound\iref{dcl.array},
@@ -851,7 +846,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{T} is an array of unknown bound\iref{basic.compound},
@@ -902,7 +896,6 @@ object\iref{customization.point.object}.
 Given a subexpression \tcode{E} with type \tcode{T},
 let \tcode{t} be an lvalue that denotes the reified object for \tcode{E}.
 Then:
-
 \begin{itemize}
 \item
   If \tcode{E} is an rvalue and
@@ -1348,7 +1341,6 @@ manipulating ranges.
 \pnum
 Many of the types in subclause~\ref{range.utility} are specified in terms of
 the following exposition-only concepts:
-
 \begin{codeblock}
 template<class R>
   concept @\defexposconceptnc{simple-view}@ =                                     // \expos
@@ -4462,7 +4454,6 @@ If \tcode{decltype((F))} does not model
 \tcode{views::take(E, F)} is ill-formed.
 Otherwise, the expression \tcode{views::take(E, F)}
 is expression-equivalent to:
-
 \begin{itemize}
 \item
 If \tcode{T} is a specialization
@@ -4873,7 +4864,6 @@ If \tcode{decltype((F))} does not model
 \tcode{views::drop(E, F)} is ill-formed.
 Otherwise, the expression \tcode{views::drop(E, F)}
 is expression-equivalent to:
-
 \begin{itemize}
 \item
 If \tcode{T} is a specialization of
@@ -6495,7 +6485,6 @@ appears in the immediate context of a template instantiation.
 \end{note}
 Otherwise, \tcode{views::counted(E, F)}
 is expression-equivalent to:
-
 \begin{itemize}
 \item
 If \tcode{T} models \libconcept{contiguous_iterator},

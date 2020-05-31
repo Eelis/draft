@@ -1115,7 +1115,6 @@ is not the same type as \tcode{charT}.
 References, pointers, and iterators referring to the elements of a
 \tcode{basic_string} sequence may be
 invalidated by the following uses of that \tcode{basic_string} object:
-
 \begin{itemize}
 \item Passing as an argument to any standard library function taking a reference to non-const
 \tcode{basic_string} as an argument.
@@ -1799,8 +1798,6 @@ constexpr basic_string& operator+=(const basic_string& str);
 \pnum
 \effects
 Equivalent to: \tcode{return append(str);}
-
-
 \end{itemdescr}
 
 \indexlibrarymember{operator+=}{basic_string}%

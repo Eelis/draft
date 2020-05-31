@@ -393,7 +393,6 @@ The enumeration \tcode{memory_order} specifies the detailed regular
 (non-atomic) memory synchronization order as defined in
 \ref{intro.multithread} and may provide for operation ordering. Its
 enumerated values and their meanings are as follows:
-
 \begin{itemize}
 \item \tcode{memory_order::relaxed}: no operation orders memory.
 
@@ -541,7 +540,6 @@ execution is possible.
 \begin{note}
 The recommendation similarly disallows \tcode{r1 == r2 == 42} in the
 following example, with \tcode{x} and \tcode{y} again initially zero:
-
 \begin{codeblock}
 // Thread 1:
 r1 = x.load(memory_order::relaxed);
@@ -2298,7 +2296,6 @@ the result converted back to the signed type.
 \begin{note}
 There are no undefined results arising from the computation.
 \end{note}
-
 \end{itemdescr}
 
 \indexlibrarymember{operator+=}{atomic<T*>}%
@@ -2576,7 +2573,6 @@ Descriptions are provided below only for members that differ from the primary te
 \pnum
 The following operations perform pointer arithmetic. The key, operator,
 and computation correspondence is:
-
 \begin{floattable}
 {Atomic pointer computations}{atomic.types.pointer.comp}{lll|lll}
 \hline

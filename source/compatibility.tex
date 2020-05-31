@@ -1145,7 +1145,6 @@ revision of \Cpp{}. For example, the following code is valid both in \CppXI{} an
 this revision of \Cpp{}, but the macro invocation produces different outcomes
 because the single quotes delimit a \grammarterm{character-literal} in \CppXI{}, whereas they are digit
 separators in this revision of \Cpp{}:
-
 \begin{codeblock}
 #define M(x, ...) __VA_ARGS__
 int x[2] = { M(1'2,3'4, 5) };
@@ -1188,7 +1187,6 @@ lvalue-to-rvalue conversion, were considered gratuitous and surprising.
 \effect
 Valid \CppXI{} code that relies on the conversions may behave differently
 in this revision of \Cpp{}:
-
 \begin{codeblock}
 struct S {
   int x = 1;
@@ -1707,7 +1705,6 @@ Overspecification.
 \effect
 The signatures of the following member functions changed from taking an
 \tcode{iterator} to taking a \tcode{const_iterator}:
-
 \begin{itemize}
 \item \tcode{insert(iter, val)} for \tcode{vector}, \tcode{deque}, \tcode{list},
 \tcode{set}, \tcode{multiset}, \tcode{map}, \tcode{multimap}
@@ -1769,7 +1766,6 @@ Clarify intentions, avoid workarounds.
 Valid \CppIII{} code that relies on implicit boolean conversions will fail to
 compile with this revision of \Cpp{}. Such conversions occur in the
 following conditions:
-
 \begin{itemize}
 \item passing a value to a function that takes an argument of type \tcode{bool};
 \item using \tcode{operator==} to compare to \tcode{false} or \tcode{true};
@@ -1848,7 +1844,6 @@ Type of \grammarterm{character-literal} is changed from \tcode{int} to \tcode{ch
 This is needed for improved overloaded function argument type
 matching.
 For example:
-
 \begin{codeblock}
 int function( int i );
 int function( char c );
@@ -1861,11 +1856,9 @@ function rather than the first.
 \effect
 Change to semantics of well-defined feature.
 ISO C programs which depend on
-
 \begin{codeblock}
 sizeof('x') == sizeof(int)
 \end{codeblock}
-
 will not work the same as \Cpp{} programs.
 \difficulty
 Simple.
@@ -1912,7 +1905,6 @@ which might expect to be able to modify its argument.
 Change to semantics of well-defined feature.
 \difficulty
 Syntactic transformation. The fix is to add a cast:
-
 \begin{codeblock}
 char* p = "abc";                // valid in C, invalid in \Cpp{}
 void f(char*) {
@@ -2134,12 +2126,10 @@ yield lvalues.
 Change to semantics of well-defined feature.  Some C
 expressions that implicitly rely on lvalue-to-rvalue
 conversions will yield different results.  For example,
-
 \begin{codeblock}
 char arr[100];
 sizeof(0, arr)
 \end{codeblock}
-
 yields
 \tcode{100}
 in \Cpp{} and
@@ -2299,7 +2289,6 @@ In the following example, the
 left-hand column presents valid C;
 the right-hand column presents
 equivalent \Cpp{}:
-
 \begin{codeblock}
 void f(const parm);            void f(const int parm);
 const n = 3;                   const int n = 3;
@@ -2350,7 +2339,6 @@ In \Cpp{}, a function declared with an empty parameter list takes no arguments.
 In C, an empty parameter list means that the number and type of the function arguments are unknown.
 
 Example:
-
 \begin{codeblock}
 int f();            // means   \tcode{int f(void)} in \Cpp{}
                     // \tcode{int f(} unknown \tcode{)} in C
@@ -2378,7 +2366,6 @@ In \Cpp{}, types may not be defined in return or parameter types.
 In C, these type definitions are allowed.
 
 Example:
-
 \begin{codeblock}
 void f( struct S { int a; } arg ) {}    // valid C, invalid \Cpp{}
 enum E { A, B, C } f() {}               // valid C, invalid \Cpp{}
@@ -2829,7 +2816,6 @@ is an \impldef{definition of \tcode{NULL}} null pointer constant in
 \pnum
 Header \libheaderref{cstring}:
 The following functions have different declarations:
-
 \begin{itemize}
 \item \tcode{strchr}
 \item \tcode{strpbrk}
@@ -2843,7 +2829,6 @@ Subclause \ref{cstring.syn} describes the changes.
 \pnum
 Header \libheaderref{cwchar}:
 The following functions have different declarations:
-
 \begin{itemize}
 \item \tcode{wcschr}
 \item \tcode{wcspbrk}
@@ -2868,7 +2853,6 @@ in addition to the names declared in
 \pnum
 Header \libheaderref{cstdlib}:
 The following functions have different behavior:
-
 \begin{itemize}
 \item \tcode{atexit}
 \item \tcode{exit}
