@@ -610,7 +610,7 @@ to the return value.
 \end{codeblock}
 
 \pnum
-The \tcode{ATOMIC_..._LOCK_FREE} macros indicate the lock-free property of the
+The \tcode{ATOMIC_\ldots{}_LOCK_FREE} macros indicate the lock-free property of the
 corresponding atomic types, with the signed and unsigned variants grouped
 together. The properties also apply to the corresponding (partial) specializations of the
 \tcode{atomic} template. A value of 0 indicates that the types are never
@@ -1684,7 +1684,7 @@ The \keyword{static} data member \tcode{is_always_lock_free} is \tcode{true}
 if the atomic type's operations are always lock-free, and \tcode{false} otherwise.
 \begin{note}
 The value of \tcode{is_always_lock_free} is consistent with the value of
-the corresponding \tcode{ATOMIC_..._LOCK_FREE} macro, if defined.
+the corresponding \tcode{ATOMIC_\ldots{}_LOCK_FREE} macro, if defined.
 \end{note}
 \end{itemdescr}
 
