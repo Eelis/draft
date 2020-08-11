@@ -4464,16 +4464,15 @@ For postfix increment and decrement, see~\ref{expr.post.incr}.
 
 \rSec3[expr.await]{Await}
 \indextext{expression!await}%
-\indextext{\idxcode{co_await}}%
 
 \pnum
-The \tcode{co_await} expression is used to suspend evaluation of a
+The \keyword{co_await} expression is used to suspend evaluation of a
 coroutine\iref{dcl.fct.def.coroutine} while awaiting completion of
 the computation represented by the operand expression.
 
 \begin{bnf}
 \nontermdef{await-expression}\br
-    \terminal{co_await} cast-expression
+    \keyword{co_await} cast-expression
 \end{bnf}
 
 \pnum
@@ -4745,7 +4744,6 @@ The type \tcode{std::size_t} is defined in the standard header
 \rSec3[expr.alignof]{Alignof}
 
 \pnum
-\indextext{\idxcode{alignof}}%
 \indextext{expression!\idxcode{alignof}}%
 An \keyword{alignof} expression yields the alignment requirement
 of its operand type. The operand shall be a \grammarterm{type-id}
@@ -4770,7 +4768,6 @@ element type.
 \rSec3[expr.unary.noexcept]{\tcode{noexcept} operator}
 
 \pnum
-\indextext{\idxcode{noexcept}}%
 \indextext{expression!\idxcode{noexcept}}%
 The \keyword{noexcept} operator determines whether the evaluation of its operand,
 which is an unevaluated operand\iref{expr.prop}, can throw an
@@ -5384,7 +5381,6 @@ to both the allocation and deallocation functions.
 
 \pnum
 \indextext{expression!\idxcode{delete}}%
-\indextext{\idxcode{delete}}%
 The \grammarterm{delete-expression} operator destroys a most derived
 object\iref{intro.object} or array created by a
 \grammarterm{new-expression}.
@@ -6767,7 +6763,6 @@ int main() {
 \rSec2[expr.throw]{Throwing an exception}%
 \indextext{expression!\idxcode{throw}}%
 \indextext{exception handling!throwing}%
-\indextext{\idxcode{throw}}%
 %
 \begin{bnf}
 \nontermdef{throw-expression}\br

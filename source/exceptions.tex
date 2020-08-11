@@ -17,15 +17,11 @@ A handler will be invoked only by throwing an exception
 in code executed in the handler's try block
 or in functions called from the handler's try block.
 
-\indextext{\idxcode{try}}%
-%
 \begin{bnf}
 \nontermdef{try-block}\br
     \keyword{try} compound-statement handler-seq
 \end{bnf}
 
-\indextext{\idxcode{try}}%
-%
 \begin{bnf}
 \nontermdef{function-try-block}\br
     \keyword{try} \opt{ctor-initializer} compound-statement handler-seq
@@ -36,8 +32,6 @@ or in functions called from the handler's try block.
     handler \opt{handler-seq}
 \end{bnf}
 
-\indextext{\idxcode{catch}}%
-%
 \begin{bnf}
 \nontermdef{handler}\br
     \keyword{catch} \terminal{(} exception-declaration \terminal{)} compound-statement
