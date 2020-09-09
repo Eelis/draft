@@ -16802,7 +16802,7 @@ namespace std {
   template<class T, class U>
     inline constexpr bool @\libglobal{is_layout_compatible_v}@ = is_layout_compatible<T, U>::value;
   template<class Base, class Derived>
-    inline constexpr bool is_pointer_interconvertible_base_of_v
+    inline constexpr bool @\libglobal{is_pointer_interconvertible_base_of_v}@
       = is_pointer_interconvertible_base_of<Base, Derived>::value;
   template<class Fn, class... ArgTypes>
     inline constexpr bool @\libglobal{is_invocable_v}@ = is_invocable<Fn, ArgTypes...>::value;
@@ -17621,7 +17621,7 @@ with a base characteristic of
 \lhdr{Template} &   \chdr{Condition}    &   \rhdr{Comments} \\ \capsep
 \endhead
 \tcode{template<class T, class U>}\br
- \tcode{struct is_same;}                    &
+ \tcode{struct \libglobal{is_same};}                    &
  \tcode{T} and \tcode{U} name the same type with the same cv-qualifications                            &   \\ \rowsep
 
 \indexlibraryglobal{is_base_of}%
@@ -18106,7 +18106,7 @@ argument passing.
 
 \tcode{template<bool B, class T,}
  \tcode{class F>}\br
- \tcode{struct conditional;}
+ \tcode{struct \libglobal{conditional};}
  &
  If \tcode{B} is \tcode{true},  the member typedef \tcode{type} shall equal \tcode{T}.
  If \tcode{B} is \tcode{false}, the member typedef \tcode{type} shall equal \tcode{F}. \\ \rowsep
@@ -18147,7 +18147,7 @@ argument passing.
 
 \tcode{template<class Fn,}\br
  \tcode{class... ArgTypes>}\br
- \tcode{struct invoke_result;}
+ \tcode{struct \libglobal{invoke_result};}
  &
  If the expression \tcode{\placeholdernc{INVOKE}(declval<Fn>(), declval<ArgTypes>()...)}
  is well-formed when treated as an unevaluated operand\iref{expr.prop},
